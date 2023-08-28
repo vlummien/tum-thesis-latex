@@ -26,7 +26,7 @@ This section explores related visualization tools that aid developers analyse th
 \subsection{Query Plan Difference Visualizer}
 \label{subsec:semantic-diff}
 
-The Query Plan Difference Visualizer is a web application that compares and visualizes physical query execution plans from different relational database systems, as shown in Figure~\ref{fig:semantic-diff}.
+The efficiency of a database system's query execution relies on the physical execution plan it generates.  Given the complexity of finding the best plan, the comparison of query plans both within a single system and accross different systems has garnered attention. This comparative analysis aims to gain valuable insights and identify potential optimisation opportunities. Previous efforts in this direction have mainly focused on quantitative metrics, in particular the total cost of the plan.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/semantic-diff.png}
@@ -34,28 +34,35 @@ The Query Plan Difference Visualizer is a web application that compares and visu
     \label{fig:semantic-diff}
   \end{figure}
 
-\noindent The comparative tool is designed for database developers who want to inspect the correlation between variations in query execution speed and the respective query plans. Through enhanced hierarchical differencing algorithms with semantic information about query plans, the tool is able to interactively capture and present  the difference between query plans.
-\\This is particularly useful for comparing different database systems or different versions of the same system, when varying query plans are used by the systems under test to process the same query.
-\\This tool is strongly related to this thesis, since the Benchy Viewer builds upon the Query Plan Difference Visualizer by integrating its core features and providing the ability to compare query plans. We will dive deeper into the integration in Chapter X. \textcolor{red}{Todo: Chapter linking}
+\noindent 
+Query execution plans describe the step-by-step hierarchical sequence of physical operations that a database system uses to process a particular SQL query. The fascinating aspect of this is that identical queries can result in different plans when processed by different database systems. This variability in plan generation can have a significant impact on overall performance.
+\\The Query Plan Difference Visualizer is a web application that compares and visualizes these physical query execution plans from different relational database systems, as shown in Figure~\ref{fig:semantic-diff}. It is designed for database developers who want to inspect the correlation between variations in query execution speed and the respective query plans. Through enhanced hierarchical differencing algorithms with semantic information about query plans, the tool is able to interactively capture and present  the difference between query plans. This is particularly useful for comparing different database systems or different versions of the same system when varying query plans are used by the systems under test to process the same query. Furthermore, it provides the flexibility to pick an arbitrary number of systems for which to compare plans and select a metric for evaluating query performance, such as total runtime or compilation time. For the given metric, it directly shows the difference between the baseline system and the better system.
+\\ Once a query plan is initialized, the comparative tool provides the option to improve the clarity of the query plan visualization using various configuration settings. For instance, the tool offers a match mode selection, allowing users to capture the tree from, e.g., a top-down or bottom-up matching perspective. With the Expand and Collapse feature, users can collapse entire subtrees and selectively expand specific child nodes, customizing the focus of the visualization and tailoring the area of attention to the most interesting parts of the tree.
+For query plans containing Directed Acyclic Graph (DAG) edges, such as the Pipeline Breaker Scan operator in Umbra, the tool offers support to include these DAG edges and consider them during the matching process. Additionally, to enable more effective comparisons against systems that generate non-DAG-shaped plans, an option is available to replicate subtrees instead.
+\\ Database developers often find value in comparing query plans, particularly when they have thoroughly examined different results using quantitative metrics. 
+Therefore, we decided to integrate the Query Plan Difference Visualizer with its core features of comparing query plans. In addition to visualizing quantitative metrics from different database systems within the Benchy Viewer, the incorporation of the Query Plan Difference Visualizer with its capabillities will further enhance our objective of simplifying the detection of performance bottlenecks in query execution and optimizing database systems. \\Hence, the Query Plan Difference Visualizer is strongly related to this thesis and we will dive deeper into the integration of the comparative tool in Chapter X. \textcolor{red}{Todo: Chapter linking}
 
 
 
 \subsection{Umbra Profiler}
-The Umbra Profiler is a tool that enables an in-depth analysis for identifying bottlenecks in query execution processes of the database system Umbra.
-\\ It is integrated with a backend application for preparing extensive profiling data and offers multiple perspectives, including a runtime dashboard, memory dashboard and an instruction dashboard, each depicting distinct information, as illustrated in Figure~\ref{fig:umbra-profiler}.
-\textcolor{red}{Wie detailliert soll ich auf Funktionen vom Umbra Profiler eingehen? Z.B welche Diagramme es gibt und welche Metriken sie darstellen? }
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{figures/umbra-profiler.png}
-    \caption{Umbra-Profiler: Tool for analyzing and profiling Umbra’s compiling queries. From left-to-right: Runtime dashboard, memory dashboard, and instruction dashboard.}
-    \label{fig:umbra-profiler}
-  \end{figure}
+The Umbra Profiler is a tool that enables in-depth analysis for identifying bottlenecks in query execution processes of the database system Umbra.
+\\ It is integrated with a backend application for preparing extensive profiling data and offers multiple perspectives, including a runtime dashboard, a memory dashboard, and an instruction dashboard, each depicting distinct information, as illustrated in Figure~\ref{fig:umbra-profiler}.
 
-\noindent Similar to the Benchy Viewer, the goal is to support database engineers in optimizing query execution by providing an interactive user interface, enabling an effective in-depth analysis process. 
-\\The Umbra Profiler is designed based on the innovative Tailored Profiling approach \cite{profiling-dataflow}, where the connection between query plans and compiled code is maintained. This technique was previously unadressed by standard profilers and is now used in both the Umbra Profiler and the Benchy Viewer.  
-\textcolor{red}{Mehr drauf eingehen, was es beim Benchy Viewer nicht gibt?}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\linewidth]{figures/umbra-profiler.png}
+  \caption{Umbra-Profiler: A tool for analyzing and profiling Umbra’s compiling queries. From left-to-right: runtime dashboard, memory dashboard, and instruction dashboard.}
+  \label{fig:umbra-profiler}
+\end{figure}
+
+\noindent 
+The runtime dashboard is the default view that appears after providing recorded hardware samples of a query execution. It offers an initial overview of the query execution structure, allowing users to analyze the activity of specific processor events, operators, and pipelines over time. Abnormalities in execution, such as resource-intensive operations, can be identified, aided by visualizations including key performance indicators, activity histograms, bar charts, query plans, sunburst charts, and swim lanes.
+\\The memory behavior dashboard focuses on memory access patterns in query execution. It offers memory heatmaps for each operator, showing either absolute memory accesses or sequential memory address differences.
+\\The instruction Dashboard facilitates detailed analysis of query execution using Umbra Intermediate Representation (UIR) \textcolor{red}{Zitat} instructions. It allows comparison of UIR instructions with query plans to identify performance problems based on costs and occurrences. 
+\\Similar to the Benchy Viewer, the goal is to support database engineers in optimizing query execution by providing an interactive user interface, enabling an effective in-depth analysis process. 
+\\The Umbra Profiler is designed based on the innovative Tailored Profiling approach \cite{profiling-dataflow}, where the connection between query plans and compiled code is maintained. This technique was previously unaddressed by standard profilers and is now used in both the Umbra Profiler and the Benchy Viewer.  
 \\However, unlike the Benchy Viewer, the Umbra Profiler is focused to operate exclusively with the database system Umbra. In contrast, the Benchy Viewer has the versatility to function with multiple database systems or multiple instances of a single database system.
 \\In broad terms, the Umbra Profiler is primarily designed for in-depth analysis of query performance within a single database system, while the Benchy Viewer is oriented towards its comparative function, enabling the comparison of queries executed by different instances. This comparative approach is the main essence  of the concept of the Benchy Viewer, which aims to enhance the understanding of differences between database instances.
-
+\\An effective scenario that synergizes the Benchy Viewer and the Umbra Profiler would involve identifying intriguing queries using the Benchy Viewer and subsequently conducting comprehensive analyses using the Umbra Profiler.
 
 
