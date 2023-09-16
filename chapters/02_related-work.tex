@@ -8,7 +8,9 @@ As performant measurement and analysis play a crucial role in developing and opt
 it is essential to examine the state-of-the-art techniques and tools that have been used in this domain.
 We will also cover a visualization tool closely associated with this thesis, as its key feature is integrated into the Benchy Viewer.
 
-
+\section{Performance Visualization}
+Sektion eher in Background
+\textcolor{red}{Todo: Was es alles in dieser Domain gibt. Was effektiv ist und wir benutzen. Was wir nicht benutzen  mit Begründung.  }
 
 \section{Database Performance Profiling }
 
@@ -40,7 +42,9 @@ Query execution plans describe the step-by-step hierarchical sequence of physica
 \\ Once a query plan is initialized, the comparative tool provides the option to improve the clarity of the query plan visualization using various configuration settings. For instance, the tool offers a match mode selection, allowing users to capture the tree from, e.g., a top-down or bottom-up matching perspective. With the Expand and Collapse feature, users can collapse entire subtrees and selectively expand specific child nodes, customizing the focus of the visualization and tailoring the area of attention to the most interesting parts of the tree.
 For query plans containing Directed Acyclic Graph (DAG) edges, such as the Pipeline Breaker Scan operator in Umbra, the tool offers support to include these DAG edges and consider them during the matching process. Additionally, to enable more effective comparisons against systems that generate non-DAG-shaped plans, an option is available to replicate subtrees instead.
 \\ Database developers often find value in comparing query plans, particularly when they have thoroughly examined different results using quantitative metrics. 
-Therefore, we decided to integrate the Query Plan Difference Visualizer with its core features of comparing query plans. In addition to visualizing quantitative metrics from different database systems within the Benchy Viewer, the incorporation of the Query Plan Difference Visualizer with its capabillities will further enhance our objective of simplifying the detection of performance bottlenecks in query execution and optimizing database systems. \\Hence, the Query Plan Difference Visualizer is strongly related to this thesis and we will dive deeper into the integration of the comparative tool in Chapter X. \textcolor{red}{Todo: Chapter linking}
+Therefore, we decided to integrate the Query Plan Difference Visualizer with its core features of comparing query plans. In addition to visualizing quantitative metrics from different database systems within the Benchy Viewer, the incorporation of the Query Plan Difference Visualizer with its capabillities will further enhance our objective of simplifying the detection of performance bottlenecks in query execution and optimizing database systems.
+
+Hence, the Query Plan Difference Visualizer is strongly related to this thesis and we will dive deeper into the integration of the comparative tool in Chapter X. \textcolor{red}{Todo: Chapter linking}
 
 
 
@@ -63,6 +67,7 @@ The runtime dashboard is the default view that appears after providing recorded 
 \\The Umbra Profiler is designed based on the innovative Tailored Profiling approach \cite{profiling-dataflow}, where the connection between query plans and compiled code is maintained. This technique was previously unaddressed by standard profilers and is now used in both the Umbra Profiler and the Benchy Viewer.  
 \\However, unlike the Benchy Viewer, the Umbra Profiler is focused to operate exclusively with the database system Umbra. In contrast, the Benchy Viewer has the versatility to function with multiple database systems or multiple instances of a single database system.
 \\In broad terms, the Umbra Profiler is primarily designed for in-depth analysis of query performance within a single database system, while the Benchy Viewer is oriented towards its comparative function, enabling the comparison of queries executed by different instances. This comparative approach is the main essence  of the concept of the Benchy Viewer, which aims to enhance the understanding of differences between database instances.
-\\An effective scenario that synergizes the Benchy Viewer and the Umbra Profiler would involve identifying intriguing queries using the Benchy Viewer and subsequently conducting comprehensive analyses using the Umbra Profiler.
+
+An effective scenario that synergizes the Benchy Viewer and the Umbra Profiler would involve identifying intriguing queries using the Benchy Viewer and subsequently conducting comprehensive analyses using the Umbra Profiler.
 
 
