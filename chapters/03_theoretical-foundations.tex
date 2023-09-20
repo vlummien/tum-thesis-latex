@@ -58,8 +58,50 @@ Besides grouping the query results into clusters, with each cluster representing
 Up next, we'll explore the dataset that is consumed by the Benchy Viewer to offer all the data and performance metrics within the analytical visualisations. We'll detail the data structure and how the data is prepared to get in this shape.
 
 \section{Used Datasets and Data Structure}
+Section Introduction
 \subsection{Description of the Utilized Performance Data}
-\subsection{Structure of the CSV File with Performance Measurements}
-\subsection{Data Preparation}
+In this section, we take a closer look at the performance data which is utilized by the Benchy Viewer. These data contain various metrics that give us insights into how our database system is performing: total time (compilation, execution), cycles, instructions, L1 data cache misses, LLC (Last-Level Cache) misses, branch misses, DTLB (Data Translation Lookaside Buffer) misses, tasks, instructions per cycle (IPC), CPU frequency (GHz), and scalability metrics. 
 
+\textbf{Total time} represents the combined time taken for both query compilation and query execution. It's a critical measure of how efficiently queries are processed. Lower total times are desired, indicating faster query processing.
+
+\textbf{Compilation} is the preparation for the execution phase where source code, written in a high-level language, is converted into a lower-level representation. Producing highly-optimized code in this stage can significantly enhance the speed and efficiency of program execution.
+
+\textbf{Execution} refers to the phase after the compilation phase where the compiled code is executed on a CPU. It involves the actual processing of instructions and data to perform the tasks specified by the program. The execution phase is of vital significance as it directly measures how efficiently a program or task runs on the hardware.
+
+\textbf{Instructions} count the number of individual machine-level instructions during the execution of a program or a specific operation and helps assessing the efficiency of code execution. A high instruction count indicates that the program is performing a large number of computations, which impacts CPU utilization and overall performance. Well-optimized code tends to have a lower instruction count for the same computational tasks. While instruction count provides valuable information about code complexity, it does not capture the complete performance picture. For a more comprehensive understanding, it should be considered alongside metrics such as cycle counts and IPC (Instructions Per Cycle).
+
+\textbf{Cycles} refer to the number of clock cycles executed during the test by a CPU. It measures the raw computational effort involved and can indicate the CPU's workload. Lower cycle counts indicate more efficient code execution, while higher counts suggest greater computational complexity or inefficiencies. While cycles provide valuable information about computational effort, they do not give a complete picture of overall system performance. Other metrics, such as instructions per cycle (IPC), may be necessary to better understand the performance landscape.
+
+\textbf{IPC (Instructions Per Cycle)} is a performance metric that measures the average number of instructions during a single clock cycle. A higher IPC value indicates that the CPU is executing more instructions per clock cycle, which suggests better performance. Well-optimized code and algorithms tend to have higher IPC values.
+
+\textbf{L1D-Misses (Level 1 Data Cache Misses)} are a performance metric that counts the number of times a CPU requested data from its Level 1 Data Cache but was unable to find the required data there. Instead, the CPU had to retrieve the data from a higher-level cache or main memory. The number of L1D-Misses is significant because it reflects how efficiently the CPU's cache hierarchy is operating. High L1D-Miss rates suggest that the CPU frequently needs to access data from slower memory levels, resulting in increased latency and potentially impacting overall system performance. Lower L1D-Miss rates generally indicate more efficient cache utilization and can result in improved execution performance.
+
+\textbf{LLC-Misses (Last-Level Cache Misses)} are a performance metric that counts the number of times a CPU failed to find requested data in its last-level cache. Instead, it had to retrieve the data from a slower memory hierarchy level, such as a higher-level cache or main memory. The number of LLC-Misses is significant because it indicates how effectively the CPU's last-level cache is utilized. Similar to L1D-Misses high LLC-Miss rates suggest that frequently accessed data is not readily available in the cache, leading to increased memory access latency and potential performance bottlenecks. Lower LLC-Miss rates generally indicate more efficient cache utilization and can lead to better overall execution performance.
+
+\textbf{Branch-Misses}, often referred to as "branch mispredictions," are a performance metric that counts the number of times a CPU incorrectly predicts the outcome of a branch instruction. Branch instructions are conditional statements (e.g., if-else or loops) in code that determine the program's flow based on a condition. A branch miss occurs when the CPU's branch predictor guesses incorrectly about the branch's outcome and, as a result, has to discard or re-execute some instructions. Therefore, high Branch-Miss rates can indicate inefficiencies in the code execution, as mispredicted branches can lead to the execution of unnecessary instructions and decreased overall performance. Several factors influence Branch-Miss rates, including the complexity of code logic, the CPU's branch prediction algorithms, and the effectiveness of compiler optimizations. Other metrics, such as instruction count, cycle count, and cache utilization, should be also considered to obtain a comprehensive view of performance.
+
+\textbf{DTLB-Misses (Data Translation Lookaside Buffer Misses)} are the number of times a CPU requested data from memory, and during this request, it also needed to fetch or translate the virtual memory address to its corresponding physical memory address, but couldn't find the translation in the Data Translation Lookaside Buffer (DTLB). Instead, it had to consult a more extensive translation structure, such as the page table in memory, to perform the translation. The number of DTLB-Misses is significant because it indicates how effectively the CPU's DTLB, which is responsible for accelerating memory address translation, is functioning. High DTLB-Miss rates suggest that the translation process is less efficient, leading to increased memory access latency.
+
+\textbf{Tasks} refer to concurrent units of work or threads that a computer system or application is managing or executing simultaneously. These tasks may represent various processes, threads, or parallel workloads. The number of tasks and their management is significant because it reflects the system's concurrency and workload handling capacity. They help assess how well a system scales with increased workloads and concurrent tasks.
+
+\textbf{CPUS} 
+\textcolor{red}{Max nach mehr Infos fragen}
+
+\textbf{GHz (Gigahertz)} is a unit of measurement used to quantify the clock speed or frequency of a CPU or other electronic components within a computer system. Specifically, it represents one billion cycles per second. In computing, it is primarily used to describe the operating frequency of a CPU. The GHz metric is significant because it reflects how quickly a CPU can process instructions and perform calculations. Higher GHz values generally indicate faster processing speeds, which can lead to quicker execution of tasks and improved system performance.
+
+\textbf{Scale}, in the context of performance analysis for databases, refers to the size of the dataset. It quantifies the system's ability to handle increasing amounts of data and workload. Scale is often measured in terms of data volume, storage capacity, or concurrent user connections. Scale-related metrics are essential for benchmarking and comparing different database systems, hardware configurations, or software designs. They help assess how systems perform as data or workload sizes increase and enable informed decisions regarding system scalability.
+\textcolor{red}{Max nach mehr Infos fragen: Was bedeutet die Zahl im CSV}
+
+In this section, we have provided a comprehensive overview of the performance metrics that will be employed in our system. The next section will detail how we format and organize our performance data for analysis.
+
+
+
+\subsection{Structure of the CSV File with Performance Measurements}
+
+Wie das CSV aussieht
+DBMS Versionen
+Eine Row repräsentiert eine Query
+\subsection{Data Preparation}
+Prozess, wie man die Daten von einem Testdurchlauf bekommt und davon ein CSV erstellt
+-> Max fragen
 
