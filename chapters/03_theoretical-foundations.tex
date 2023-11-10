@@ -101,16 +101,14 @@ In this section, we have provided a comprehensive overview of the performance me
 \subsection{Structure of the Input File with Performance Measurements}
 One step preceding the utilization of the Benchy Viewer is the provision of the benchmark data, which will be later used to generate the performance visualisations. In this section, we give an overview about the structure of the input file for the Benchy Viewer.
 
-When submitting data to the Benchy Viewer, only one CSV file is needed to be uploaded to the system \textcolor{red}{Zitat für CSV?}. This CSV file contains the benchmark data of all the participating database systems.
+When submitting data to the Benchy Viewer, only one CSV file is needed to be uploaded to the system. This CSV file contains the benchmark data of all the participating database systems.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{figures/csv-structure.png}
+  \includegraphics[width=1\linewidth]{figures/csv-structure.pdf}
   \caption{CSV structure of the input data for the Benchy Viewer}
   \label{fig:csv-structure}
 \end{figure}
-
-\noindent
 
 The structure of the input file, as depicted in Figure~\ref{fig:csv-structure}, is well-defined. It contains the entries of the respective database systems, with each query being associated with a database system. For example, when comparing TPC-H benchmark data, each database should comprise data for all 22 TPC-H queries. Each individual query contains data for multiple metrics, which were defined in the previous section such as compilation time, execution time, cycles, instructions, etc.
 
