@@ -41,7 +41,7 @@ With these two metrics, the paper shows an intuitive and clear overview of how d
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/risc-metrcis-visualization.png}
+  \includegraphics[width=0.8\linewidth]{figures/risc-metrcis-visualisation.png}
   \caption{Visualisation example of compile-time and throughput of different query-compilation strategies running the TPC-H benchmark \cite{Bringin-Compiling-Databases-to-RISC}.}
   \label{fig:risc-metrics}
 \end{figure}
@@ -51,7 +51,7 @@ With these two metrics, the paper shows an intuitive and clear overview of how d
 The visualisation presents a scatter plot that groups query results into clusters, with each cluster representing a database instance by a distinct color. The Y-axis displays the throughput in tuples per second, while the X-axis shows the latency in seconds, which is a descending value from left to right. Additionally, arrowed labels point to the preferred values: higher values on the Y-axis and lower on the X-axis. Thus, top-right-corner values represent optimal performance, allowing viewers to quickly identify well-performing database instances as well as the performance differences between instances.\\
 In this illustration, the system highlighted in red is notable for its low latency and high throughput. Conversely, the system marked in yellow has the poorest latency performance. The instance in purple also stands out, boasting the lowest latency, but it lags behind in terms of throughput.
 
-In the context of performance metrics, the Benchy Viewer should be capable of visualizing the key differences between instances in an intuitive and effective way. 
+In the context of performance metrics, the Benchy Viewer should be capable of visualising the key differences between instances in an intuitive and effective way. 
 
 Besides grouping the query results into clusters, with each cluster representing a database instance, it would also be beneficial to have the flexibility to choose a specific metric for this categorization. For instance, if a database developer is primarily concerned with the metrics of execution time and throughput, they should have the option to shape the data visualisation based on these metrics.
 
