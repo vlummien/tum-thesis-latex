@@ -183,13 +183,13 @@ In addition to visualisations, the Benchy Viewer features a data table for in-de
   \label{fig:data-viewer}
 \end{figure}
 
-This view displays the complete data, which is described deeply in section \ref{sec:input-file-structure}. The header contains all properties and metrics of a data row. The data rows below the header represent the data of a query, containing the reference to the database system and the complete benchmark data of this query.\\
-The user can scroll vertically and horizontally given the amount of the data rows and the metrics. The header provides some options in a drop-down menu to work with the data sheet, as shown in Figure~\ref{fig:data-viewer-options}. The first option is to sort the table by chosen data column containing numerical data. The user has the possibility to do this ascending or descending and also reset the sorting. This is useful when the user wants to sort specific data, e.g. the total time in ms.
+This view displays the complete data, which is described deeply in section \ref{sec:input-file-structure}.\\
+The header contains all properties and metrics of a data row. The data rows below the header represent the data of a query, containing the reference to the database system and the complete benchmark data of this query.\\
+The user can scroll vertically and horizontally given the amount of the data rows and the metrics. The header provides some options in a drop-down menu to work with the data sheet, as shown in Figure~\ref{fig:data-viewer-options}. The first option is to sort the table by a chosen data column containing numerical data. The user has the possibility to do this ascending or descending and also reset the sorting. This is useful when the user wants to sort specific data, e.g. the total time in ms.
 
 
 This view showcases the benchmark data, elaborately described in Section \ref{sec:input-file-structure}. The header encompasses all properties and metrics of a data row. Data rows below the header represent the data of a query, including the reference to the database system and the complete benchmark data for that query.\\
-Vertical and horizontal scrolling are enabled to navigate through the extensive data rows and metrics, as the volume of information exceeds the screen's capacity.\\
-The header offers various options in a drop-down menu to interact with the data sheet, as depicted in Figure~\ref{fig:data-viewer-options}.
+Vertical and horizontal scrolling are enabled to navigate through the extensive data rows and metrics, as the volume of information exceeds the screen's capacity.
 
 \begin{figure}[h]
   \centering
@@ -198,6 +198,9 @@ The header offers various options in a drop-down menu to interact with the data 
   \label{fig:data-viewer-options}
 \end{figure}
 
+The header offers various options in a drop-down menu to interact with the data sheet, as depicted in Figure~\ref{fig:data-viewer-options}.
+
+% Sorting
 The first option enables sorting the table based on a selected data column with numerical values. Users can choose between ascending or descending order, and there's an option to reset the sorting. This functionality is particularly useful when organizing specific data, for instance, sorting the table based on total time in milliseconds.
 
 \begin{figure}[h]
@@ -217,23 +220,23 @@ The first option enables sorting the table based on a selected data column with 
   \label{fig:combined-figures}
 \end{figure}
 
+% Filter
 The filter option, as shown in Figure~\ref{fig:data-viewer-filter}, provides a tool for refining the displayed data in the table. Users can easily narrow down their focus by selecting a specific column, an operator, and a value. This allows for targeted exploration of the data, such as isolating rows related to a particular database management system, as demonstrated in Figure~\ref{fig:data-viewer-filter-operator}. This filtering capability enhances the user's ability to extract meaningful insights from the benchmark data.
 
 
-
-Manage columns
+% Manage Columns
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.4\linewidth]{figures/data-viewer-manage-columns.png}
+  \includegraphics[width=0.35\linewidth]{figures/data-viewer-manage-columns.png}
   \caption{.}
   \label{fig:data-viewer-manage-columns}
 \end{figure}
 
-Ende
+When dealing with extensive datasets, the Benchy Viewer ensures flexibility and ease of use by allowing users to tailor their view. Through the 'Manage columns' feature, accessed via the drop-down menu, users can not only hide columns but also gain a holistic overview of active columns. 
 
+Figure~\ref{fig:data-viewer-manage-columns} showcases this functionality, providing users with the ability to effortlessly activate or deactivate columns, conduct quick searches, and streamline their view by hiding or showing all columns at once. This empowers users to focus on the specific data points relevant to their analysis, enhancing the efficiency of the benchmark data exploration process.
 
-- Funktionen, die man hier machen kann: Sortieren, filtern, hide/ manage columns...
 
 
 
