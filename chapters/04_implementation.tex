@@ -19,7 +19,7 @@ Visualising Benchmark Data includes multiple aspects. It involves the import of 
 
 \subsubsection{Charts and Plots}
 
-We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database systems included in the benchmark data are presented as coloured toggles, allowing users to activate or deactivate their appearance in the visualisation.
+We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database systems included in the benchmark data are presented as coloured toggles, allowing users to activate or deactivate their appearance in the visualisation. We dive deeper into the interactive legend in \ref{sec:query-analytics}.
 
 \begin{figure}[h]
     \centering
@@ -240,19 +240,136 @@ Figure~\ref{fig:data-viewer-manage-columns} showcases this functionality, provid
 
 
 
-\subsection{Query Analytics: Comparative Examination and Comprehensive Benchmark Insight }
-Select Queries
+\subsection{Query Analytics: Comparative Examination and Comprehensive Benchmark Insight }\label{sec:query-analytics}
 
+One of the primary functions of the Benchy Viewer is to conduct a comparative analysis of the performance across various database systems. The application offers a range of tools for this purpose. In addition to presenting diverse charts and plots for analyzing query data from various angles, the Benchy Viewer allows users to inspect the query plan of a selected query in a comparative manner. To initiate this process, users need to choose the particular query and the involved database systems.
+
+\subsubsection{Preparation for In-Depth Analysis}
+
+In the analytical process of identifying and inspecting a noteworthy query, it is beneficial to refine the information for a more precise and clear understanding.\\
+The Benchy Viewer features an interactive legend that not only provides information about group colors but also offers the ability to enable or disable all query visualizations of a system throughout the entire application.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/legend-activate-deactivate.png}
+  \caption{Interactive legend with the functionality to activate or deactivate database systems.}
+  \label{fig:legend-activate-deactivate}
+\end{figure}
+
+This is particularly valuable when a significant query is identified, and a comparison between two systems is of interest, while there are other less relevant systems in the data that may clutter the visualizations. In such cases, users can utilize the interactive header, illustrated in Figure~\ref{fig:legend-activate-deactivate}, to streamline their view and prioritize the visualizations based on current needs.
+
+% Select Queries
+In the course of analysing benchmark data and identifying noteworthy queries, a deeper inspection of these queries becomes essential. The Benchy Viewer incorporates a versatile hover feature, as introduced in Section \ref{sec:hover-feature}, providing a multi-perspective view of a specific query by highlighting it across various visualizations simultaneously.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.15\linewidth]{figures/select-query.png}
-  \caption{.}
+  \caption{Drop-down for selecting a specific query for deeper inspection.}
   \label{fig:select-query}
 \end{figure}
 
-DBs aktivieren/ deaktivieren
-Query Plan
+Similar to this functionality, the Benchy Viewer provides the option to directly select a specific query. This can be accomplished through various means, such as using a drop-down menu, as illustrated in Figure~\ref{fig:select-query}, or by clicking on a specific query data point within a visualisation (e.g., clicking on a bar in a bar chart or a data point in a scatter plot).
+
+
+Selecting a query will also result in highlighting the query in all visualisations, similar to the universal hover feature, also depicted in the Figure~\ref{fig:hover-group}. So, it is possible to highlight two distinct queries at once, the selected query and the hovered query, which enables a comparison between two queries using multiple perspectives. 
+
+Choosing a specific query results in its highlighting across all visualisations, similar to the universal hover feature demonstrated in Figure~\ref{fig:hover-group}. This enables users to concurrently emphasize two separate queries, the chosen query and a hovered one, enabling a comparative analysis from various angles.
+
+\subsubsection{Comprehensive Query Insights}
+
+% Query Plan
+In the analysis workflow facilitated by the Benchy Viewer, once a significant query has been identified for more in-depth examination, the subsequent step involves selecting this particular query and transitioning to the Query Plan View. In this phase, users gain the ability to meticulously inspect the query plan associated with the chosen query for each database system under consideration.
+
+The interactive legend, depicted in Figure~\ref{fig:legend-activate-deactivate}, maintains its presence in this view, allowing users to seamlessly activate or deactivate the display of query plans corresponding to specific database systems.
+
+For clarity and comparative analysis, all activated query plans are rendered in a unified visualization. Each query plan is presented in its designated system colour. This representation is exemplified in Figure~\ref{fig:query-plan-basic}, where the various query plans are harmoniously displayed for comprehensive comparative scrutiny. This visual approach not only streamlines the analysis process but also contributes to a more intuitive understanding of the comparative performance of queries across different database systems.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{figures/query-plan-slim.png}
+    \caption{Query plan view comparing the query plan of a specific query between two database systems.}
+      \label{fig:query-plan-basic}
+  \end{subfigure}
+  \hspace{1cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.35\linewidth}
+      \includegraphics[width=\linewidth]{figures/query-plan-combined-slim.png}
+      \caption{Query plan view comparing the query plan of a specific query between two database systems.}
+      \label{fig:query-plan-combined}
+  \end{subfigure}
+  \caption{Query plan comparison between different database systems.}
+  \label{fig:query-plan}
+\end{figure}
+
+
+% Funktionen des Query-Plans
+The query plan feature is equipped with many tools designed to facilitate a thorough inspection of query plans.
+% Combine Trees
+A central capability is the merging of all activated query plans using a specified strategy, using the slider illustrated in Figure~\ref{fig:query-plan-slider}. This merging process, exemplified in Figure~\ref{fig:query-plan-combined}, involves summarizing identical subtrees across different plans. Such merging proves invaluable for inspecting divergences in inspected queries, as varying query plan structures are more clearly visualized. For an in-depth exploration of merging strategies, please refer to Section \ref{sec:semantic-diff-integration}.
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures/query-plan-slider.png}
+  \caption{Selection of the query plan merging strategy in the form of a slider.}
+  \label{fig:query-plan-slider}
+\end{figure}
+
+% Hide Subtree
+For extensive query plans, it's beneficial to conceal subtrees that are presently less relevant. This action reduces the overall size of the query plan, emphasizing the more pertinent sections. Users can employ this functionality for any node, as illustrated in Figure~\ref{fig:query-plan-hide-subtree}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.35\linewidth]{figures/query-plan-hide-subtree.png}
+  \caption{Query plan with a hidden subtree in the bottom left corner.}
+  \label{fig:query-plan-hide-subtree}
+\end{figure}
+
+% Map
+When dealing with extensive query plans, having a tool to comprehend the entire canvas is essential. To facilitate this, a map, as shown in Figure~\ref{fig:query-plan-map}, is included in the bottom right corner of the query plan view. This map provides an overview of the query plans using simplified visual representations of the nodes. Furthermore, it indicates the current location within the complete layout of the query plan, aiding in orientation.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures/query-plan-map.png}
+  \caption{Map of the query plan showing the current location and the tree in a simplified version.}
+  \label{fig:query-plan-map}
+\end{figure}
+
+% Node Info, System Representation
+
+The query plan offers supplementary details about nodes. Clicking on a node opens a concise overview, as depicted in Figure~\ref{fig:query-plan-node-info-a}, displaying information about the operator, its type, estimated cardinality, and exact cardinality.\\
+In scenarios where multiple databases are activated, and a merged node is selected, the information view shows details for all systems being merged within that node, as illustrated in Figure~\ref{fig:query-plan-node-info-combined}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=0.8\linewidth]{figures/query-plan-node-info.png}
+    \caption{Node information window.}
+      \label{fig:query-plan-node-info-a}
+  \end{subfigure}
+  \hspace{1cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.4\linewidth}
+      \includegraphics[width=0.9\linewidth]{figures/query-plan-node-info-combined.png}
+      \caption{Node information window of a shared node.}
+      \label{fig:query-plan-node-info-combined}
+  \end{subfigure}
+  \caption{Node information window of the selected node.}
+  \label{fig:query-plan-node-info}
+\end{figure}
+
+The information window also allows displaying the system representation. As an overlay, similar to Figure~\ref{fig:query-plan-system-representation}, the system representation appears in the style of a simple code editor, presenting information in a code-like format. Line numbers are displayed on the left, and an overview of the file is shown on the right.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/query-plan-node-system-representation-combined.png}
+  \caption{Query plan system representaion of a node.}
+  \label{fig:query-plan-system-representation}
+\end{figure}
+
+At the top, the user can choose the database system for which the system representation should be displayed in the case of a merged node.
+
+All these functionalities are provided by the semantic diff tool \textcolor{red}{ZITAT}. We dive deeper into the integration of the semantic diff tool in the section \ref{sec:semantic-diff-integration}.
+
 
 \subsection{Flexible Interface Hub}
 \subsubsection{Drag and Drop}
@@ -300,7 +417,7 @@ Chart beschreiben.
 \subsection{Hover Feature}
 \subsection{Selected Query Feature}
 
-\section{Integration of semantic-diff-tool}
+\section{Integration of semantic-diff-tool}\label{sec:semantic-diff-integration}
 \subsection{Business Logic}
 \subsection{Settings}
 \subsection{UI}
