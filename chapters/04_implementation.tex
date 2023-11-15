@@ -97,30 +97,30 @@ Conducting benchmark performance analysis often necessitates a comparative appro
 \end{figure}
 
 
-This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualisations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slowdown and speedup metric, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualisations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
+This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualisations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slow-down and speedup metric, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualisations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
 
-In the context of providing a clear and comparative understanding of how different systems perform relative to a chosen baseline, the metrics maximum slowdown and maximum speedup become crucial. They offer a comprehensive view of the range of performance variations. Maximum slowdown indicates the worst-case scenario of reduced performance, while maximum speedup highlights the most significant improvement achieved.
+In the context of providing a clear and comparative understanding of how different systems perform relative to a chosen baseline, the metrics maximum slow-down and maximum speedup become crucial. They offer a comprehensive view of the range of performance variations. Maximum slow-down indicates the worst-case scenario of reduced performance, while maximum speedup highlights the most significant improvement achieved.
 
-\textbf{Slowdown} indicates how much slower a specific system is compared to the baseline system. It is calculated as the ratio of the time taken by the system under consideration to the time taken by the baseline system. A slowdown value greater than 1 implies that the system is slower than the baseline. For example, a slowdown of 1.5 means the system is 1.5 times slower than the baseline.\\
-Identifying slowdowns is crucial for pinpointing areas of inefficiency or performance bottlenecks in a system. It helps in understanding where improvements are needed.
+\textbf{Slowdown} indicates how much slower a specific system is compared to the baseline system. It is calculated as the ratio of the time taken by the system under consideration to the time taken by the baseline system. A slow-down value greater than 1 implies that the system is slower than the baseline. For example, a slow-down of 1.5 means the system is 1.5 times slower than the baseline.\\
+Identifying slow-downs is crucial for pinpointing areas of inefficiency or performance bottlenecks in a system. It helps in understanding where improvements are needed.
 
-\textbf{Speedup}, on the other hand, quantifies how much faster a specific system is compared to the baseline system. It is calculated similarly to slowdown but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
+\textbf{Speedup}, on the other hand, quantifies how much faster a specific system is compared to the baseline system. It is calculated similarly to slow-down but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
 Knowing the speedup is essential to highlight improvements. It indicates the effectiveness of optimizations or enhancements made to the system compared to the baseline.
 
-The Benchy Viewer employs tables to showcase the maximum slowdown and maximum speedup, visualised in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slowdown is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colours in the table serves as an effective visual indicator of performance outliers. Intensity in colour corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This colour-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
+The Benchy Viewer employs tables to showcase the maximum slow-down and maximum speedup, visualised in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slow-down is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colours in the table serves as an effective visual indicator of performance outliers. Intensity in colour corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This colour-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1\linewidth]{figures/bsp-table-speedup-slowdown.png}
-  \caption{Tables showcase the maximum slowdown and the maximum speedup using colour intensity to indicate performance outliers.}
+  \caption{Tables showcase the maximum slow-down and the maximum speedup using colour intensity to indicate performance outliers.}
   \label{fig:slowdown-speedup-chart}
 \end{figure}
 
 The tables are organized based on the resulting ratio.\\
-In the maximum slowdown tables, the arrangement is ascending, placing the slowest queries of the baseline system compared to the faster alternative system at the top.\\
+In the maximum slow-down tables, the arrangement is ascending, placing the slowest queries of the baseline system compared to the faster alternative system at the top.\\
 Conversely, in maximum speedup tables, the sorting is descending, presenting the fastest queries of the baseline system compared to the alternative system at the forefront. This sorting strategy provides a logical structure to quickly identify and compare performance differences in either scenario.
 
-The scatter plot is another effective choice for visualising speedup and slowdown. These plots are particularly beneficial for trend analysis, offering a detailed view of each query individually. Users can identify trends, clusters, or outliers in the data, providing insights that might be less apparent in a table.
+The scatter plot is another effective choice for visualising speedup and slow-down. These plots are particularly beneficial for trend analysis, offering a detailed view of each query individually. Users can identify trends, clusters, or outliers in the data, providing insights that might be less apparent in a table.
 
 In the Benchy Viewer a baseline is displayed, as illustrated in Figure~\ref{fig:scatter} positioned at Y = 1 and coloured in blue. This positioning allows users to observe the relative performance of each query compared to the baseline system.
 
@@ -434,10 +434,92 @@ Initiating the deletion process, another noteworthy feature embedded in the cont
 
 
 \subsubsection{Chart Configurations}\label{sec:chart-configuration}
-- Metrics auswählen
-- tabele und scatter: speed-up/ slow-down
-- Scale: Linear/ Log/ Throuput
-- Violin: scatter und boxplot
+
+Within the Benchy Viewer, a versatile dashboard serves as a backdrop for seamless interaction with diverse visualisations. Delving into individual visualisation elements, the platform prioritizes adaptability, allowing users to tailor charts and plots to their specific requirements.\\
+We'll explore the capability to select a metric within a chart, demonstrate the flexibility of switching to a table visualisation in the context of maximum speed-up and maximum slow-down, and finally, highlight global chart options.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.35\linewidth]{figures/chart-configuration.png}
+  \caption{Drop-down menu of chart options offering to select the visualised metric. Also the delete and duplicate functionality is provided.}
+  \label{fig:chart-configuration}
+\end{figure}
+
+% - Metrics auswählen
+Every visualisation element within the drag-and-drop dashboard features a header, as illustrated in Figure~\ref{fig:analytics-drag-and-drop}. Beyond the drag-and-drop functionality, the header hosts an options icon, providing access to various configuration settings, as depicted in Figure~\ref{fig:chart-configuration}.\\
+Within the nested drop-down menu, users can seamlessly tailor their selection of metrics to meet specific needs.
+
+Upon selecting a metric, the chart dynamically updates, presenting the new data within the current visualisation framework. This rapid and flexible construction of charts enhances the user's ability to gain valuable insights swiftly.
+
+Similarly, users can quickly duplicate a chart for comparative analysis or delete it to streamline the dashboard. The duplicate function allows for the replication of a chart with its current settings, providing an efficient way to explore variations of the same data.\\
+Conversely, the delete function promptly removes a chart, contributing to a clutter-free and focused visual workspace. These functionalities collectively empower users to fine-tune their analytical environment for a seamless exploration experience.
+
+% - tabele und scatter: speed-up/ slow-down
+In the analytical process of working with the metric pair speed-up and slow-down, seamlessly toggling between maximum speed-up and maximum slow-down is crucial. The Benchy Viewer facilitates this transition through the switch icon integrated into the header of the table visualization, as exemplified in Figure~\ref{fig:chart-configuration-table-switch}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/chart-configuration-table-switch.png}
+  \caption{Table visualisation provides the functionality to switch between maximum speed-up and maximum slow-down.}
+  \label{fig:chart-configuration-table-switch}
+\end{figure}
+
+A simple click on the switch icon triggers the table to transition to the alternate mode, dynamically updating its data to reflect the chosen metric. This feature ensures a fluid and efficient exploration of performance data, allowing users to effortlessly switch between speed-up and slow-down perspectives as needed.
+
+
+% - Scale: Linear/ Log/ Throuput
+In addition to the nuanced control over individual visualizations, the Benchy Viewer empowers users with global chart options, allowing users to sculpt the visual landscape to their specific analytical requirements.
+
+One of the noteworthy features is the ability to globally switch the Y-axis type, as depicted in Figure~\ref{fig:chart-configuration-scale}. This flexibility allows users to choose between linear, logarithmic, and throughput representations, offering diverse perspectives on the benchmark data. Whether aiming for a detailed examination of variations in lower values or emphasizing proportional changes, the global Y-axis type switch ensures that the visualizations align with the user's analytical focus.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\linewidth]{figures/chart-configuration-scale.png}
+  \caption{Drop-down menu of global options offering the selection of the scale type.}
+  \label{fig:chart-configuration-scale}
+\end{figure}
+
+The linear scale is ideal when a precise examination of small variations in data is paramount. This scale excels in offering a detailed, granular view, particularly advantageous for closely positioned metric values.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/scale-linear.png}
+    \caption{Violin plot with linear scale.}
+      \label{fig:scale-linear}
+  \end{subfigure}
+  \hspace{0.5cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/scale-log.png}
+    \caption{Violin plot with logarithmic scale.}
+      \label{fig:scale-log}
+  \end{subfigure}
+  \hspace{0.5cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/scale-throughput.png}
+    \caption{Violin plot with throughput based scale.}
+      \label{fig:scale-throughput}
+  \end{subfigure}
+  \caption{Comparison of violin plots using different scales: A visual representation of the same dataset, highlighting how variations appear under linear, logarithmic, and throughput scaling.}
+  \label{fig:scale-comparison.}
+\end{figure}
+
+The logarithmic scale excels in highlighting proportional changes across a wide range of values. This is particularly advantageous when dealing with datasets that span several orders of magnitude, ensuring that both small and large values are perceptible.
+
+The throughput scale is specifically designed for scenarios where the emphasis is on the rate of data transfer or processing. It provides a unique perspective, crucial in benchmarking scenarios where throughput is a critical performance metric.
+
+By seamlessly switching between these Y-axis types globally, users can extract diverse insights from the same set of data, enhancing the versatility and depth of their analytical processes.
+
+
+% - Violin: scatter und boxplot
+The Benchy Viewer also offers customization options for violin plots. Users can choose between representing data inside the violins as individual data points or as a boxplot, as illustrated in Figure~\ref{fig:chart-configuration-violin}. Opting for data points means that each query data is individually represented, providing a wealth of detailed information. On the other hand, selecting the "Boxplot" option replaces individual data points with a summarized boxplot inside the violin. This option streamlines the visualization, offering clarity by presenting an overview of the data distribution. Users have the flexibility to tailor the representation based on their specific analytical needs.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/chart-configuration-violin.png}
+  \caption{Drop-down menu of global options, offering the selection of displaying data points or a boxplot within the violins of the violin charts.}
+  \label{fig:chart-configuration-violin}
+\end{figure}
 
 \subsection{Saving and Sharing the Application State}
 
