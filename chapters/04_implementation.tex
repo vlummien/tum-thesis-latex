@@ -343,13 +343,13 @@ In scenarios where multiple databases are activated, and a merged node is select
 \begin{figure}[h]
   \centering
   \begin{subfigure}[b]{0.4\linewidth}
-    \includegraphics[width=0.8\linewidth]{figures/query-plan-node-info.png}
+    \includegraphics[width=0.7\linewidth]{figures/query-plan-node-info.png}
     \caption{Node information window.}
       \label{fig:query-plan-node-info-a}
   \end{subfigure}
   \hspace{1cm} % Adjust the horizontal space between the figures
   \begin{subfigure}[b]{0.4\linewidth}
-      \includegraphics[width=0.9\linewidth]{figures/query-plan-node-info-combined.png}
+      \includegraphics[width=0.8\linewidth]{figures/query-plan-node-info-combined.png}
       \caption{Node information window of a shared node.}
       \label{fig:query-plan-node-info-combined}
   \end{subfigure}
@@ -372,13 +372,73 @@ All these functionalities are provided by the semantic diff tool \textcolor{red}
 
 
 \subsection{Flexible Interface Hub}
+
+To offer a well-suited platform for analysing specific performance differences of high complexity, a flexible system is essential for conducting these analytical processes. Such flexibility is crucial for providing tailored solutions to inspect specific aspects of benchmark data.
+
+In this section, we will explore how the Benchy Viewer achieves this functionality, primarily through a drag-and-drop system for visualization elements. This empowers users to select the necessary visualisations and construct a comprehensive overview.
+
+Subsequently, we will delve deeper into the actual visualisations, examining the flexibility of configuring charts and plots to optimize the perspective of performance data within a specific visualization.
+
 \subsubsection{Drag and Drop}
-DnD Sektionen und Dnd Charts
-\subsubsection{Chart Configurations}
+The drag-and-drop system integrated into the Benchy Viewer empowers users to effortlessly rearrange every chart and plot. Beyond the flexibility offered by individual visualization elements, users can strategically organize visualizations within containers. These containers are essentially thematic sections, each represented by a headline. Users have the flexibility to rename these containers, creating dedicated spaces for specific topics and populating them with relevant charts and plots.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/analytics-drag-and-drop.png}
+  \caption{Flexible interface hub through drag and drop feature for visualisation elements and their containers.}
+  \label{fig:analytics-drag-and-drop}
+\end{figure}
+
+The versatility of containers allows them to function as distinct analytical sections, housing visualization elements pertinent to that specific context. Moreover, the dynamic nature of the Benchy Viewer enables users to seamlessly move visualizations between containers, fostering adaptability in organizing and categorizing data. The ability to drag entire containers further enhances this adaptability, enabling users to arrange sections according to their analytical preferences. This dual flexibility, within containers and with container placement, provides users with a robust framework for tailoring their analytical environment to meet the demands of diverse datasets.
+
+\subsubsection{Analytics Sections}
+
+% Rename Section
+The top header of a container, as illustrated in Figure~\ref{fig:analytics-drag-and-drop}, serves as a hub for fundamental container functionalities. An intuitive feature allows users to rename a container by clicking on the edit icon situated next to the container's label. This action triggers a dialogue with a straightforward text input, as depicted in Figure~\ref{fig:analytics-section-rename}. Once users input and confirm the new label using the "ok" button, the container's label promptly updates.\\
+Users can now efficiently organize and contextualize their analytical elements within appropriately named containers. The ability to swiftly modify container labels enhances the user experience, enabling them to maintain a well-structured and easily navigable analytical workspace.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures/analytics-section-rename.png}
+  \caption{Text input for renaming containers.}
+  \label{fig:analytics-section-rename}
+\end{figure}
+
+% Add chart
+To enrich the content within a container, users can effortlessly incorporate charts and plots using the icon positioned in the right corner of the container's header. This action opens an overlay menu presenting a variety of available plots and charts for inclusion in the container, as showcased in Figure~\ref{fig:analytics-add-chart}. Upon the user's selection of a visualisation element, the analytical section promptly updates, seamlessly integrating the chosen element into its content.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/analytics-add-chart.png}
+  \caption{Overlay for adding charts to the current container.}
+  \label{fig:analytics-add-chart}
+\end{figure}
+
+This intuitive process streamlines the augmentation of analytical sections, allowing users to dynamically enhance their workspace with relevant visualisations. The added charts and plots are instantly ready for utilization, fostering a fluid and responsive analytical environment within the Benchy Viewer.\\
+We dive deeper into the utilization and configuration of the charts and plots in \ref{sec:chart-configuration}.
+
+
+% Set Visibility of containers
+Another valuable functionality in the container's header is the visibility toggle. Users can swiftly conceal an analytics section by simply clicking the visibility icon of a container, as illustrated in Figure~\ref{fig:analytics-section-visibility}. This action disables the view of the content, revealing only the header of the container. Users can easily reactivate visibility or access other functionalities.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/analytics-section-visibility.png}
+  \caption{Visibility property to hide or show a container.}
+  \label{fig:analytics-section-visibility}
+\end{figure}
+
+The convenience of collapsing containers, coupled with the drag-and-drop feature, enhances overall user comfort and efficiency. This uncomplicated feature significantly enhances clarity and ease of use, especially when managing a substantial number of visualizations and diverse data perspectives.
+
+Initiating the deletion process, another noteworthy feature embedded in the container's header is the delete function. By clicking on the delete icon of a container, users can efficiently remove an analytics section. This action permanently eliminates the container and its content. This straightforward delete function provides a quick and effective way to manage the organizational structure of visualizations.
+
+
+\subsubsection{Chart Configurations}\label{sec:chart-configuration}
 - Metrics auswählen
 - tabele und scatter: speed-up/ slow-down
 - Scale: Linear/ Log/ Throuput
 - Violin: scatter und boxplot
+
 \subsection{Saving and Sharing the Application State}
 
 
