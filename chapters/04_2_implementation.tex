@@ -26,7 +26,7 @@ The Benchy Viewer embraces a deliberate colour scheme aimed at providing a clean
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\linewidth]{figures/colors.png}
+  \includegraphics[width=0.4\linewidth]{figures/colors.png}
   \caption{Colour palette of the user interface.}
   \label{fig:colors}
 \end{figure}
@@ -45,8 +45,88 @@ Additionally, the Benchy Viewer employs the Roboto font \textcolor{red}{Zitat} f
 
 
 \subsection{Page Structure and Navigation}
+
+The design of the Benchy Viewer is thoughtfully crafted for user convenience and simplicity. This section provides insights into the structural components that define the organization of the Benchy Viewer.
+
+At the heart of the application's architecture are the header and the sidebar, ensuring constant visibility for users and facilitating seamless navigation. These elements contribute to maintaining a strong sense of orientation throughout the user journey.
+
+
 \subsubsection{Sidebar}
+
+The Benchy Viewer adopts a standard web view with a sidebar, leveraging the familiar layout seen in many web applications, as illustrated in Figure~\ref{fig:app}. This approach comes with inherent advantages. Users accustomed to web interfaces will find this structure intuitive and easily navigable, contributing to a seamless user experience.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\linewidth]{figures/app.png}
+  \caption{Overview of the application structure.}
+  \label{fig:app}
+\end{figure}
+
+The sidebar serves as the central hub for navigating different sections of the application, while always staying present. By providing dedicated buttons, users can effortlessly transition between pages, ensuring quick access to specific functionalities and data views. Additionally, the navigation button of the current page is highlighted with the accent colour.
+
+Below, the users have the possibility to import benchmark data or explore the application's capabilities using demo data. This feature facilitates a hands-on experience without the immediate need to provide personal datasets, making it convenient for users to evaluate the application's functionalities.
+
+The sidebar offers additional functionalities, including the ability to reset hover highlighting. Users can download and upload the application state, enabling them to save configurations and share them or reload them for future sessions, which is further examined in \ref{sec:saving-sharing-state}. 
+
+A settings icon button in the sidebar provides direct access to the global settings of the Benchy Viewer, allowing users to adjust application-wide settings from anywhere within the application.
+
+
+
+\subsubsection{Header}
+The header, along with the sidebar, remains visible in all scenarios within the Benchy Viewer. While the sidebar offers a range of functionalities, the header contains fewer elements. The central element of the header is the legend, strategically placed to eliminate the need for a legend in each individual visualisation, promoting a clean and efficient overview. Users can activate or deactivate any system at any time using the toggles within the legend.
+
+Another crucial functionality in the header is the selection of the baseline system and the focused query, offering the same advantage of accessibility at any point in the user's workflow.
+
+Additionally, the header adapts contextually when navigating to the "Query Plan" page. In this scenario, a slider appears for selecting the comparison strategy between query plans, providing further flexibility and control, as explored in Section \ref{sec:semantic-diff-integration}.
+
+
+
 \subsubsection{Pages}
+
+The Sidebar and Header form the foundation of the user interface, while the remaining space is dedicated to displaying the various pages. Essentially, the Benchy Viewer comprises three main pages, depicted in Figure~\ref{fig:pages}: the Analytics Dashboard page, the Query Plan page, and the Input File Viewer page.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/app.png}
+    \caption{Analytics dashboard.}
+      \label{fig:app-page}
+  \end{subfigure}
+  \hspace{0.5cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/app-query-plan.png}
+    \caption{Query plan view.}
+      \label{fig:app-query-plan}
+  \end{subfigure}
+  \hspace{0.5cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{figures/app-data-viewer.png}
+    \caption{Input file viewer.}
+      \label{fig:app-data-viewer}
+  \end{subfigure}
+  \caption{From left to right: Analytics dashboard page, query plan page, and input file viewer page}
+  \label{fig:pages}
+\end{figure}
+
+The Analytics Dashboard page features the drag-and-drop system for visualising elements and their containers. This page serves as the hub for analysing benchmark data, offering charts and plots to explore queries from diverse perspectives.
+
+Upon identifying significant queries using the analytics dashboard, users often transition to the Query Plan page. This page serves as a central hub for comparing distinct query plans across various database systems. 
+
+In contrast, the Input File Viewer page offers a minimalist perspective. Tailored for users seeking an unembellished view of their imported benchmark data, this page omits visualisations. It provides an in-depth examination of the raw data, enabling users to scrutinize the dataset's structure and intricacies without the influence of charts or plots.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Data Structure}
 \subsection{Overall Project Structure}
