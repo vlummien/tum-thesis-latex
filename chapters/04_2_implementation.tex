@@ -2,6 +2,13 @@
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
 \section{Design}
+In this section, we explore the foundational principles guiding the Benchy Viewer's user interface. Rooted in Material Design, the application employs Material UI components for a clean and familiar look. The deliberate colour scheme, restricted to black, white, and gray accents, promotes simplicity.
+
+Moving on, we delve into the sidebar and the header, ensuring constant visibility and facilitating seamless navigation. The sidebar acts as a central hub, offering functionalities from page navigation to data import. The header contains crucial elements like the legend, eliminating the need for one in each visualization.
+
+Finally, we examine the application's pages: Analytics Dashboard, Query Plan View, and Input File View. Each serves a distinct purpose, from analysing benchmark data to offering a minimalist view of raw imported data. 
+
+
 \subsection{User Interface Design Styles}
 \subsubsection{Material UI}
 % MUI Zitate 
@@ -20,7 +27,7 @@ By aligning with Material Design principles, the Benchy Viewer achieves a design
 
 \subsubsection{Styling Characteristics}
 
-The Benchy Viewer embraces a deliberate colour scheme aimed at providing a clean design. This is achieved through a restraint to specific base colors, limiting the palette to black, white, and a gray accent colour, as depicted in Figure~\ref{fig:colors}. By adhering to this minimalist approach, the application exudes a sense of simplicity, ensuring a visually uncluttered interface.
+The Benchy Viewer embraces a deliberate colour scheme aimed at providing a clean design. This is achieved through a restraint to specific base colours, limiting the palette to black, white, and a gray accent colour, as depicted in Figure~\ref{fig:colors}. By adhering to this minimalist approach, the application exudes a sense of simplicity, ensuring a visually uncluttered interface.
 
 
 
@@ -129,7 +136,16 @@ In contrast, the Input File Viewer page offers a minimalist perspective. Tailore
 
 
 \section{Data Structure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figures/project-structure.png}
+  \caption{.}
+  \label{fig:project-structure}
+\end{figure}
 \subsection{Overall Project Structure}
+JSX Hierarchie: Root-> Redux Provider -> ... -> UI etc.
+
 \subsection{Input File and Benchmark Data}
 
 
@@ -139,7 +155,7 @@ The first step, working with the Benchy Viewer is to import a file containing th
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{figures/csv-structure.pdf}
+  \includegraphics[width=0.2\linewidth]{figures/csv-structure.pdf}
   \caption{Import process of input data}
   \label{fig:input-process-flow}
 \end{figure}
@@ -152,6 +168,20 @@ Chart beschreiben.
 \subsection{Query Plan}
 \subsubsection{Visualisation Parameters}
 \subsubsection{Query Plan Data Structure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Integration of Plotly-React for Data Visualisation}
 \subsection{Types of Plots and Charts}
