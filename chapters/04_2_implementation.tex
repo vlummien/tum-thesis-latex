@@ -4,7 +4,7 @@
 \section{Design}
 In this section, we explore the foundational principles guiding the Benchy Viewer's user interface. Rooted in Material Design, the application employs Material UI components for a clean and familiar look. The deliberate colour scheme, restricted to black, white, and gray accents, promotes simplicity.
 
-Moving on, we delve into the sidebar and the header, ensuring constant visibility and facilitating seamless navigation. The sidebar acts as a central hub, offering functionalities from page navigation to data import. The header contains crucial elements like the legend, eliminating the need for one in each visualization.
+Moving on, we delve into the sidebar and the header, ensuring constant visibility and facilitating seamless navigation. The sidebar acts as a central hub, offering functionalities from page navigation to data import. The header contains crucial elements like the legend, eliminating the need for one in each visualisation.
 
 Finally, we examine the application's pages: Analytics Dashboard, Query Plan View, and Input File View. Each serves a distinct purpose, from analysing benchmark data to offering a minimalist view of raw imported data. 
 
@@ -170,16 +170,16 @@ Utilizing the capabilities of \textit{Redux Toolkit}\parencite{redux-toolkit}, t
 \end{figure}
 
 % Analytics Dashboard state
-The Analytics Dashboard State encapsulates all the data concerning visualizations within the Analytics Dashboard. It includes information about the position within the dashboard and the configuration of each visualization element. A more detailed exploration of this data structure is provided in Section \ref{sec:analytics-dashboard}.
+The Analytics Dashboard State encapsulates all the data concerning visualisations within the Analytics Dashboard. It includes information about the position within the dashboard and the configuration of each visualisation element. A more detailed exploration of this data structure is provided in Section \ref{sec:analytics-dashboard}.
 
 % Imported Benchmark Data state
 The Current Benchmark Data State is responsible for holding all benchmark data from various database systems. This state is a pivotal component used across the Analytics Dashboard, Query Plan View, and Benchmark Data View. A detailed examination of this state's structure is available in Section \ref{sec:input-data}.
 
 % Global Settings state
-Focused on interactive features within visualizations, the Global Settings State encompasses functionalities like the global hover state or the selected query. Section \ref{sec:global-settings} delves into the specifics of this data structure.
+Focused on interactive features within visualisations, the Global Settings State encompasses functionalities like the global hover state or the selected query. Section \ref{sec:global-settings} delves into the specifics of this data structure.
 
 % Query Plan Parameters state
-Tailoring the visualization needs for the user, the Query Plan Parameters State contains data related to the appearance and comparison types of the query plans. More insights into this state are provided in Section \ref{sec:query-plan-parameters}.
+Tailoring the visualisation needs for the user, the Query Plan Parameters State contains data related to the appearance and comparison types of the query plans. More insights into this state are provided in Section \ref{sec:query-plan-parameters}.
 
 % Query Plan Nodes state
 Lastly, the Query Plan Nodes State unfolds the story of the actual query plan, housing details about every node and their associated information. For a comprehensive exploration, turn to Section \ref{sec:query-plan-structure}.
@@ -193,26 +193,78 @@ Finally, we encounter the pages with their contents within the Benchy Viewer. Th
 
 At this point, the various components at different levels come together to form the Benchy Viewer application. The root component lays the groundwork, overseeing essential processes. The Redux Provider acts as a central hub for sharing information across the application. The global state, divided into five slices, provides state to all pages. The router facilitates easy navigation between pages, which is controlled in the sidebar. In essence, these pages, with their structured layouts, unite to offer users a seamless and comprehensive experience.
 
-\subsection{Input File and Benchmark Data}\label{sec:input-data}
-% Import of Input File
-% CSV Slice
 
-% \subsubsection{Import of Performance Data}
 
-% The first step, working with the Benchy Viewer is to import a file containing the performance data which should be visualised. The file needs to follow the format introduced in Section \ref{sec:input-file-structure}. Figure~\ref{fig:input-process-flow} summarizes the import of the input file in a process diagram.
 
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[width=0.2\linewidth]{figures/csv-structure.pdf}
-%   \caption{Import process of input data}
-%   \label{fig:input-process-flow}
-% \end{figure}
 
-% Chart beschreiben.
+
+
+
+
+
+
+
+
+
+\subsection{Benchmark Data}\label{sec:input-data}
+
+The initial step when engaging with the Benchy Viewer involves importing a file containing performance data slated for visualisation. This file must adhere to the format outlined in Section \ref{sec:input-file-structure} and is processed by the Current Benchmark Data State, introduced in the previous section. 
+
+\subsubsection{Import Process}
+
+Throughout the importation process, the input file undergoes parsing and transformation into a TypeScript object. Subsequently, the benchmark data is partitioned according to the respective database systems. This partitioning ensures that all query data aligns with its associated database system. The resulting data structure encompasses a system ID, a title, all pertinent benchmark data, and an activation flag.
+
+\subsubsection{Data Accessibility}
+
+After the data import, the benchmark data is accessible to all visualisation elements across the whole Benchy Viewer. This includes all visualisation elements within the Analytics Dashboard, the File Viewer, and the Query Plan View.
+
+The activation flag controls the visibility of the system data of a whole database system in the visualisations. This is accessed through the header's legend toggles, where users can control the activation or deactivation of database systems.
+
+Additionally, this state holds the demo data, which is initialised on the start of the application. Upon user requests via the sidebar, the demo data is loaded as the current benchmark data.
+
 
 
 \subsection{Global Settings}\label{sec:global-settings}
+
+In the Benchy Viewer, the Global Settings serve as a central hub for interactive and customizable data exploration. Features like hover and selected queries offer real-time insights, while selecting a baseline system deepens understanding for comparative analysis. Visual configurations provide the power to mould data representation, aligning with user preferences. In essence, the Global Settings act as the control center, empowering users for dynamic and tailored data exploration.
+
+\subsubsection{Hovered Query}
+
+A key interactive feature is the global hover functionality, where details about the currently hovered query are stored. This information is triggered when a user hovers over a specific query within a visualisation element on a detailed level, like a bar in a bar chart. This hover information is then synchronized across all other visualisations simultaneously.
+
+\subsubsection{Selected Query}
+
+Much like the hover feature, the selected query is stored and activated through interactions within the visualisation elements at a detailed level. Additionally, a drop-down input in the header allows users to manually select the current query. This state is utilized not only for highlighting purposes in the Analytics Dashboard, but also in the Query Plan View for selecting the corresponding query plan.
+
+\subsubsection{Baseline System}
+
+Another crucial component within this data slice is the selected baseline system, a linchpin for comparative analyses in the Benchy Viewer. This feature empowers users to delve into the results of their chosen system, comparing and contrasting its performance against other systems. This is particularly valuable in visualisations incorporating metrics like speed-up and slow-down.
+
+Specifically utilized in visualisations such as the comparative query bar chart, the selected baseline system plays a vital role in illustrating the performance delta for each query. This allows users to discern the nuanced differences between the baseline system and the best-performing alternative. 
+
+\subsubsection{Visualisation Configurations}
+
+This segment houses configuration options influencing the visual aspects of charts, detailed in Section \ref{sec:chart-configuration}. It governs factors like the chart axis scale and display type for violin plots. Users can conveniently access and tweak these options through the settings menu in the sidebar. The choices made here resonate across various visualisation elements in the Analytics Dashboard, providing a tailored and cohesive visual experience.
+
+
+
+
+
+
+
+
+
+
 \subsection{Analytics Dashboard Data Structure}\label{sec:analytics-dashboard}
+DnD-Slice
+
+
+
+
+
+
+
+
 \subsection{Query Plan}
 \subsubsection{Visualisation Parameters}\label{sec:query-plan-parameters}
 \subsubsection{Query Plan Data Structure}\label{sec:query-plan-structure}
