@@ -51,7 +51,7 @@ To enhance user experience, the Benchy Viewer incorporates immediate feedback me
 Additionally, the Benchy Viewer employs the Roboto font \textcolor{red}{Zitat} for a clean and modern look, enhancing readability and contributing to a user-friendly interface.
 
 
-\subsection{Page Structure and Navigation}
+\subsection{Page Structure and Navigation}\label{sec:page-structure}
 
 The design of the Benchy Viewer is thoughtfully crafted for user convenience and simplicity. This section provides insights into the structural components that define the organization of the Benchy Viewer.
 
@@ -137,37 +137,85 @@ In contrast, the Input File Viewer page offers a minimalist perspective. Tailore
 
 \section{Data Structure}
 
+
+\subsection{Overall Project Structure}
+
+The Benchy Viewer embodies a robust project structure that leverages React, global state management, and a page navigating router, as illustrated in Figure \ref{fig:project-structure}, which we will explore in this section.
+
 \begin{figure}[h]
+  \vspace{0.5cm}
   \centering
   \includegraphics[width=0.5\linewidth]{figures/project-structure.png}
-  \caption{.}
+  \caption{Project Structure Hierarchy}
   \label{fig:project-structure}
 \end{figure}
-\subsection{Overall Project Structure}
-JSX Hierarchie: Root-> Redux Provider -> ... -> UI etc.
 
-\subsection{Input File and Benchmark Data}
+\subsubsection{Root Component}
+The root component is the entry point of the Benchy Viewer React application, orchestrating critical processes that define its robustness and efficiency.\\
+The primary responsibility of the root component is to render the main application, serving as the nexus for various functionalities, providing the structural and organizational backbone for the entire application. 
+
+In the project structure hierarchy, the root component encapsulates the application with\texttt{ <React.StrictMode/>}~\parencite{reactstrictmode}, which is a tool that highlights common issues and potential problems in a React application during development.
+In general, it detects impure calculations in the context of component states and multiple rendering. It enables a set of additional checks and warnings to catch and alert developers about unsafe or deprecated practices, contributing to better code quality. While it doesn't affect the production build, it's a valuable aid in identifying and addressing issues early in the development phase.
 
 
-\subsubsection{Import of Performance Data}
-
-The first step, working with the Benchy Viewer is to import a file containing the performance data which should be visualised. The file needs to follow the format introduced in Section \ref{sec:input-file-structure}. Figure~\ref{fig:input-process-flow} summarizes the import of the input file in a process diagram.
+\subsubsection{State Management with Redux}
+The Redux Provider in the Benchy Viewer, built using the Redux~Framework~\parencite{Redux}, serves as the central hub for managing the application's state. It acts as a shared space where different parts of the application can store and retrieve data efficiently.\\
+Utilizing the capabilities of \textit{Redux Toolkit}\parencite{redux-toolkit}, the Redux Provider supplies the global state across the entire application. This global state is compartmentalized into five distinct slices, illustrated in Figure~\ref{fig:global-state}, each serving a unique purpose.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.2\linewidth]{figures/csv-structure.pdf}
-  \caption{Import process of input data}
-  \label{fig:input-process-flow}
+  \includegraphics[width=0.8\linewidth]{figures/global-state.png}
+  \caption{Application State Compartements}
+  \label{fig:global-state}
 \end{figure}
 
-Chart beschreiben.
+% Analytics Dashboard state
+The Analytics Dashboard State encapsulates all the data concerning visualizations within the Analytics Dashboard. It includes information about the position within the dashboard and the configuration of each visualization element. A more detailed exploration of this data structure is provided in Section \ref{sec:analytics-dashboard}.
+
+% Imported Benchmark Data state
+The Current Benchmark Data State is responsible for holding all benchmark data from various database systems. This state is a pivotal component used across the Analytics Dashboard, Query Plan View, and Benchmark Data View. A detailed examination of this state's structure is available in Section \ref{sec:input-data}.
+
+% Global Settings state
+Focused on interactive features within visualizations, the Global Settings State encompasses functionalities like the global hover state or the selected query. Section \ref{sec:global-settings} delves into the specifics of this data structure.
+
+% Query Plan Parameters state
+Tailoring the visualization needs for the user, the Query Plan Parameters State contains data related to the appearance and comparison types of the query plans. More insights into this state are provided in Section \ref{sec:query-plan-parameters}.
+
+% Query Plan Nodes state
+Lastly, the Query Plan Nodes State unfolds the story of the actual query plan, housing details about every node and their associated information. For a comprehensive exploration, turn to Section \ref{sec:query-plan-structure}.
 
 
-\subsection{Plot Options}
-\subsection{Visualisation Arrangement Data Structure}
+\subsubsection{Router}
+Navigating through the corridors of the Benchy Viewer's project structure, the router, powered by \textit{React Router} \parencite{react-router}, providing a standardized approach to handle navigation in React. Specifically, in our application, this router guides users through three key areas: the Analytics Dashboard, Query Plan View, and Data Viewer.
+
+\subsubsection{Layout and Content}
+Finally, we encounter the pages with their contents within the Benchy Viewer. These pages share a consistent structure, ensuring a unified user experience. Each page adheres to a standardized layout, featuring a sidebar, a header, and a dedicated space for content, which we discussed the page structure in \ref{sec:page-structure}.
+
+At this point, the various components at different levels come together to form the Benchy Viewer application. The root component lays the groundwork, overseeing essential processes. The Redux Provider acts as a central hub for sharing information across the application. The global state, divided into five slices, provides state to all pages. The router facilitates easy navigation between pages, which is controlled in the sidebar. In essence, these pages, with their structured layouts, unite to offer users a seamless and comprehensive experience.
+
+\subsection{Input File and Benchmark Data}\label{sec:input-data}
+% Import of Input File
+% CSV Slice
+
+% \subsubsection{Import of Performance Data}
+
+% The first step, working with the Benchy Viewer is to import a file containing the performance data which should be visualised. The file needs to follow the format introduced in Section \ref{sec:input-file-structure}. Figure~\ref{fig:input-process-flow} summarizes the import of the input file in a process diagram.
+
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.2\linewidth]{figures/csv-structure.pdf}
+%   \caption{Import process of input data}
+%   \label{fig:input-process-flow}
+% \end{figure}
+
+% Chart beschreiben.
+
+
+\subsection{Global Settings}\label{sec:global-settings}
+\subsection{Analytics Dashboard Data Structure}\label{sec:analytics-dashboard}
 \subsection{Query Plan}
-\subsubsection{Visualisation Parameters}
-\subsubsection{Query Plan Data Structure}
+\subsubsection{Visualisation Parameters}\label{sec:query-plan-parameters}
+\subsubsection{Query Plan Data Structure}\label{sec:query-plan-structure}
 
 
 
