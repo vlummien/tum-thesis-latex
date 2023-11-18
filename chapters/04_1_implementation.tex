@@ -7,19 +7,19 @@ Chapter Introduction
 
 \section{Concept: Features and Interaction Capabilities of the App}
 In this section, we explore the expected features and capabilities crucial for our objectives and the necessary interaction capabilities from an end user's perspective.\\
-We start with the visualisation capabilities of the benchmark data, where the goal is to easily identify performance bottlenecks. This involves pinpointing interesting queries with distinct performances for subsequent in-depth analysis.\\
+We start with the visualization capabilities of the benchmark data, where the goal is to easily identify performance bottlenecks. This involves pinpointing interesting queries with distinct performances for subsequent in-depth analysis.\\
 For deeper analysing and achieving a profound understanding of diverse performance results within queries, the application should support a focus on individual queries. Users should be able to view the performance of a single query from various perspectives, providing a comprehensive image. Comparative analysis across queries from different database systems or even the same database but with different configurations is also essential.\\ 
-Then, we examine the requirements for a suitable dashboard that contains the main part of the performance visualisations. Multiple views are necessary to construct a complete understanding of the current point of interest. The optimal structure of these views may vary depending on the point of interest. The flexibility of a drag-and-drop solution for structuring views allows users to tailor the overview according to their specific interests.\\
-Finally, we examine the capability of the system to facilitate collaboration and knowledge sharing. The application should enable the saving and sharing of potential findings. This involves saving the interface configuration of the analysis for sharing with other users. Recipients should be able to upload the received configuration, gaining access to the same data and visualisation structure for collaborative exploration.
+Then, we examine the requirements for a suitable dashboard that contains the main part of the performance visualizations. Multiple views are necessary to construct a complete understanding of the current point of interest. The optimal structure of these views may vary depending on the point of interest. The flexibility of a drag-and-drop solution for structuring views allows users to tailor the overview according to their specific interests.\\
+Finally, we examine the capability of the system to facilitate collaboration and knowledge sharing. The application should enable the saving and sharing of potential findings. This involves saving the interface configuration of the analysis for sharing with other users. Recipients should be able to upload the received configuration, gaining access to the same data and visualization structure for collaborative exploration.
 
 
 \subsection{Visualising Benchmark Data}
-Visualising Benchmark Data includes multiple aspects. It involves the import of the actual data, where a proper way of importing the data should be provided. We also cover the utilized plots and charts for the data visualisation. In addition to visualisation, we offer a comprehensive table view of the data.
+Visualising Benchmark Data includes multiple aspects. It involves the import of the actual data, where a proper way of importing the data should be provided. We also cover the utilized plots and charts for the data visualization. In addition to visualization, we offer a comprehensive table view of the data.
 
 
 \subsubsection{Charts and Plots}
 
-We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database systems included in the benchmark data are presented as coloured toggles, allowing users to activate or deactivate their appearance in the visualisation. We dive deeper into the interactive legend in \ref{sec:query-analytics}.
+We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database systems included in the benchmark data are presented as colored toggles, allowing users to activate or deactivate their appearance in the visualization. We dive deeper into the interactive legend in \ref{sec:query-analytics}.
 
 \begin{figure}[h]
     \centering
@@ -31,7 +31,7 @@ We aim to offer a dashboard containing multiple data views. To prevent UI clutte
 
 
 When initiating the analytical process with the Benchy Viewer after importing the benchmark data, it may be beneficial to start with a general and straightforward overview of the benchmark data for quickly gaining an understanding of the general performance standings of the database systems.\\
-Within the Benchy Viewer, this overview is effectively conveyed through the relative performance visualisation, as depicted in Figure~\ref{fig:relative-performance}. This chart displays, on the Y-Axis, the relative performance of each system in percentage compared to the best-performing system in the benchmark data. The X-Axis lists and represents every database system contained in the benchmark data.
+Within the Benchy Viewer, this overview is effectively conveyed through the relative performance visualization, as depicted in Figure~\ref{fig:relative-performance}. This chart displays, on the Y-Axis, the relative performance of each system in percentage compared to the best-performing system in the benchmark data. The X-Axis lists and represents every database system contained in the benchmark data.
 
 \begin{figure}[h]
   \centering
@@ -40,7 +40,7 @@ Within the Benchy Viewer, this overview is effectively conveyed through the rela
   \label{fig:relative-performance}
 \end{figure}
 
-After obtaining this initial overview, users can quickly identify the system marked with the red colour as the benchmark, as it processes all queries faster than all other systems. In this visualisation, this system is set as the benchmark with 100\% performance, providing a clear reference point for relative comparisons.\\
+After obtaining this initial overview, users can quickly identify the system marked with the red color as the benchmark, as it processes all queries faster than all other systems. In this visualization, this system is set as the benchmark with 100\% performance, providing a clear reference point for relative comparisons.\\
 This chart serves as a valuable starting point for further in-depth analyses and allows users to grasp the overall performance landscape before delving into specific metrics or queries.
 
 In the next phase of the analysis process, we delve into two crucial aspects: compilation and execution. Compilation is the phase where source code is translated into machine code, preparing it for execution Compilation. It is a crucial step that impacts the overall performance of the system. On the other hand, execution is the phase where the compiled code is run on the system. This step involves the actual processing of the instructions and the generation of results. The time spent in the execution phase is a key factor in determining the system's efficiency in handling tasks.
@@ -50,17 +50,17 @@ To understand how much time each database system allocates to these processes, t
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\linewidth]{figures/bsp-compilation-execution.png}
-  \caption{Stacked bar chart illustrating the distribution of time between compilation and execution steps. The compilation step is depicted in a transparent accent colour, while the execution step is represented in the full colour intensity.}
+  \caption{Stacked bar chart illustrating the distribution of time between compilation and execution steps. The compilation step is depicted in a transparent accent color, while the execution step is represented in the full color intensity.}
   \label{fig:execution-compilation}
 \end{figure}
 
-Using solely the ratio of the two different steps, without taking into account the overall performance, would present an incomplete picture of the balance between the two process steps compared to the better-performing systems. Therefore, this chart complements the relative performance visualisation discussed earlier. By incorporating information about the overall performance, it aims to offer a comprehensive understanding while illustrating the equilibrium between compilation and execution for each system.
+Using solely the ratio of the two different steps, without taking into account the overall performance, would present an incomplete picture of the balance between the two process steps compared to the better-performing systems. Therefore, this chart complements the relative performance visualization discussed earlier. By incorporating information about the overall performance, it aims to offer a comprehensive understanding while illustrating the equilibrium between compilation and execution for each system.
 
 In this example, a comparison is made between two database systems, with the Y-Axis indicating the relative performance and the X-Axis listing different database systems. Umbra stands out as the best-performing system, with its bar reaching the 100\% level. In contrast, Hyper attains 45\% of Umbra's performance. When hovering over one of the process steps, the chart displays the percentage of the total time spent by the system in that specific step. For instance, Hyper allocated 18.23\% of the entire process to the compilation step, while Umbra spent 27\% on this phase.
 
 Hence, the stacked bar chart in the Benchy Viewer offers a consolidated view of how each database system allocates time between compilation and execution steps. Its integration of the relative performance metric ensures a balanced understanding of system efficiency, preventing oversights from focusing solely on step ratios. With clear visual distinctions and the ability to compare multiple systems, this chart enhances analytical insights into performance disparities and offering an aerial view of compilation and execution.
 
-The preceding visualisation solution \textcolor{red}{Referenz auf PDF} shows essential benchmark visualisations, offering both a comprehensive overview of all queries and a detailed examination of each individual query.
+The preceding visualization solution \textcolor{red}{Referenz auf PDF} shows essential benchmark visualizations, offering both a comprehensive overview of all queries and a detailed examination of each individual query.
 
 It commences with a comparative analysis of each query using a bar chart. Similar to Figure~\ref{fig:bar-chart}, this chart displays queries from various database systems on the X-Axis, with the total time presented on the Y-Axis. 
 
@@ -71,7 +71,7 @@ It commences with a comparative analysis of each query using a bar chart. Simila
     \label{fig:bar-chart}
   \end{figure}
 
-Bar plots stand out as a versatile visualisation method, particularly when tasked with presenting the performance metrics of multiple queries. Their inherent clarity, with the length of each bar directly corresponding to a specific performance metric such as compilation time or execution time, makes them well-suited for diverse scenarios.\\
+Bar plots stand out as a versatile visualization method, particularly when tasked with presenting the performance metrics of multiple queries. Their inherent clarity, with the length of each bar directly corresponding to a specific performance metric such as compilation time or execution time, makes them well-suited for diverse scenarios.\\
 The straightforward visual comparison they offer is a notable strength. With each query distinctly represented by a separate bar, variations in performance become immediately apparent.\\
 This quality proves especially valuable for our objective of identifying outliers, as these exceptional values are easily noticeable.
 
@@ -97,7 +97,7 @@ Conducting benchmark performance analysis often necessitates a comparative appro
 \end{figure}
 
 
-This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualisations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slow-down and speedup metric, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualisations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
+This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualizations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slow-down and speedup metric, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualizations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
 
 In the context of providing a clear and comparative understanding of how different systems perform relative to a chosen baseline, the metrics maximum slow-down and maximum speedup become crucial. They offer a comprehensive view of the range of performance variations. Maximum slow-down indicates the worst-case scenario of reduced performance, while maximum speedup highlights the most significant improvement achieved.
 
@@ -107,12 +107,12 @@ Identifying slow-downs is crucial for pinpointing areas of inefficiency or perfo
 \textbf{Speedup}, on the other hand, quantifies how much faster a specific system is compared to the baseline system. It is calculated similarly to slow-down but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
 Knowing the speedup is essential to highlight improvements. It indicates the effectiveness of optimizations or enhancements made to the system compared to the baseline.
 
-The Benchy Viewer employs tables to showcase the maximum slow-down and maximum speedup, visualised in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slow-down is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colours in the table serves as an effective visual indicator of performance outliers. Intensity in colour corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This colour-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
+The Benchy Viewer employs tables to showcase the maximum slow-down and maximum speedup, visualised in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slow-down is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colors in the table serves as an effective visual indicator of performance outliers. Intensity in color corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This color-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1\linewidth]{figures/bsp-table-speedup-slowdown.png}
-  \caption{Tables showcase the maximum slow-down and the maximum speedup using colour intensity to indicate performance outliers.}
+  \caption{Tables showcase the maximum slow-down and the maximum speedup using color intensity to indicate performance outliers.}
   \label{fig:slowdown-speedup-chart}
 \end{figure}
 
@@ -122,7 +122,7 @@ Conversely, in maximum speedup tables, the sorting is descending, presenting the
 
 The scatter plot is another effective choice for visualising speedup and slow-down. These plots are particularly beneficial for trend analysis, offering a detailed view of each query individually. Users can identify trends, clusters, or outliers in the data, providing insights that might be less apparent in a table.
 
-In the Benchy Viewer a baseline is displayed, as illustrated in Figure~\ref{fig:scatter} positioned at Y = 1 and coloured in blue. This positioning allows users to observe the relative performance of each query compared to the baseline system.
+In the Benchy Viewer a baseline is displayed, as illustrated in Figure~\ref{fig:scatter} positioned at Y = 1 and colored in blue. This positioning allows users to observe the relative performance of each query compared to the baseline system.
 
 \begin{figure}[h]
   \centering
@@ -136,9 +136,9 @@ Hovering above these query data points reveals the ratio of the corresponding sp
 Queries from the competing system are marked in orange, and most of them are slower, with three queries below the baseline, indicating that these particular queries are faster.\\
 This observation prompts further investigation into the queries below the baseline, offering an opportunity to identify potential performance bottlenecks from the perspective of the baseline system. This nuanced understanding, facilitated by the visual representation of the scatter plot, guides users in pinpointing specific queries that deviate from the expected performance trend, aiding in targeted optimizations and analysis.
 
-In the Benchy Viewer, another visualisation occurs, highlighting the performance disparities between a chosen baseline system and its competitors. It takes the form of a bar chart that illustrates the performance gap for each query, providing a perspective of the baseline system compared to the best-performing query of other competing systems.
+In the Benchy Viewer, another visualization occurs, highlighting the performance disparities between a chosen baseline system and its competitors. It takes the form of a bar chart that illustrates the performance gap for each query, providing a perspective of the baseline system compared to the best-performing query of other competing systems.
 
-The performance delta chart in the Benchy Viewer not only displays the performance gap for each query from the perspective of the baseline system but also indicates the best competing system for each query by using corresponding system colours, as depicted in Figure~\ref{fig:performance-gap}. The Y-axis shows the performance gap percentage of the competing queries, while the X-axis represents the identifying query number. Hovering over bars reveals the exact performance delta.
+The performance delta chart in the Benchy Viewer not only displays the performance gap for each query from the perspective of the baseline system but also indicates the best competing system for each query by using corresponding system colors, as depicted in Figure~\ref{fig:performance-gap}. The Y-axis shows the performance gap percentage of the competing queries, while the X-axis represents the identifying query number. Hovering over bars reveals the exact performance delta.
 
 \begin{figure}[h]
   \centering
@@ -147,10 +147,10 @@ The performance delta chart in the Benchy Viewer not only displays the performan
   \label{fig:performance-gap}
 \end{figure}
 
-In this example, the red-marked database system is selected as the baseline system. Queries with faster performance by the baseline system are displayed above the baseline, indicating a positive performance delta. In contrast, queries with stronger performance by competing systems are shown below the baseline, indicating a negative performance delta for the baseline system. Additionally, the bar of each query is marked with the colour of the corresponding best-performing database system.\\
+In this example, the red-marked database system is selected as the baseline system. Queries with faster performance by the baseline system are displayed above the baseline, indicating a positive performance delta. In contrast, queries with stronger performance by competing systems are shown below the baseline, indicating a negative performance delta for the baseline system. Additionally, the bar of each query is marked with the color of the corresponding best-performing database system.\\
 The performance gap for the majority of cases in this example stays within a range between -20\% and 20\%. However, some outliers are notably significant. For instance, the seventh query has a performance gap of -86\%. A deeper analysis of this query may be sensible to potentially identify performance bottlenecks from the perspective of the baseline system.
 
-This query performance gap visualisation is instrumental in quickly discerning how each query of the baseline system stacks up against the top-performing queries of other systems. The chart's simplicity ensures easy comprehension, enabling users to promptly assess the relative performance of different queries.
+This query performance gap visualization is instrumental in quickly discerning how each query of the baseline system stacks up against the top-performing queries of other systems. The chart's simplicity ensures easy comprehension, enabling users to promptly assess the relative performance of different queries.
 
 
 
@@ -160,21 +160,21 @@ This query performance gap visualisation is instrumental in quickly discerning h
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/hover-group.png}
-  \caption{Hovering over a query automatically highlights in a global context the same query in all visualisations which are showcasing single queries. These visualisations include violin plots, scatter plots, and bar charts when one bar represents a single query.}
+  \caption{Hovering over a query automatically highlights in a global context the same query in all visualizations which are showcasing single queries. These visualizations include violin plots, scatter plots, and bar charts when one bar represents a single query.}
   \label{fig:hover-group}
 \end{figure}
 
-Hovering over data points in a chart is an indispensable feature, commonly employed to extract more detailed information about a specific data point. In the context of analysing query performances and identifying noteworthy queries within visualisations, the ability to scrutinize a particular query from multiple perspectives becomes crucial.
+Hovering over data points in a chart is an indispensable feature, commonly employed to extract more detailed information about a specific data point. In the context of analysing query performances and identifying noteworthy queries within visualizations, the ability to scrutinize a particular query from multiple perspectives becomes crucial.
 
 
  In the Benchy Viewer, we've elevated this feature, which is illustrated in Figure~\ref{fig:hover-group}, to a global hover capability within the application.\\
- This means that when a user hovers over a specific query, not only is that query highlighted within the current chart, but the same queries within all other visualisations are also highlighted simultaneously.This synchronization spans various visualisations, including violin plots, scatter plots, and bar charts which represent distinct queries.
+ This means that when a user hovers over a specific query, not only is that query highlighted within the current chart, but the same queries within all other visualizations are also highlighted simultaneously.This synchronization spans various visualizations, including violin plots, scatter plots, and bar charts which represent distinct queries.
 
 
 
 \subsubsection{Data Viewer}
 
-In addition to visualisations, the Benchy Viewer features a data table for in-depth inspection of benchmark data. This table presents the imported user data, as exemplified in the excerpt of the data viewer in Figure~\ref{fig:data-viewer}.
+In addition to visualizations, the Benchy Viewer features a data table for in-depth inspection of benchmark data. This table presents the imported user data, as exemplified in the excerpt of the data viewer in Figure~\ref{fig:data-viewer}.
 
 \begin{figure}[h]
   \centering
@@ -247,7 +247,7 @@ One of the primary functions of the Benchy Viewer is to conduct a comparative an
 \subsubsection{Preparation for In-Depth Analysis}
 
 In the analytical process of identifying and inspecting a noteworthy query, it is beneficial to refine the information for a more precise and clear understanding.\\
-The Benchy Viewer features an interactive legend that not only provides information about group colors but also offers the ability to enable or disable all query visualisations of a system throughout the entire application.
+The Benchy Viewer features an interactive legend that not only provides information about group colors but also offers the ability to enable or disable all query visualizations of a system throughout the entire application.
 
 \begin{figure}[h]
   \centering
@@ -256,10 +256,10 @@ The Benchy Viewer features an interactive legend that not only provides informat
   \label{fig:legend-activate-deactivate}
 \end{figure}
 
-This is particularly valuable when a significant query is identified, and a comparison between two systems is of interest, while there are other less relevant systems in the data that may clutter the visualisations. In such cases, users can utilize the interactive header, illustrated in Figure~\ref{fig:legend-activate-deactivate}, to streamline their view and prioritize the visualisations based on current needs.
+This is particularly valuable when a significant query is identified, and a comparison between two systems is of interest, while there are other less relevant systems in the data that may clutter the visualizations. In such cases, users can utilize the interactive header, illustrated in Figure~\ref{fig:legend-activate-deactivate}, to streamline their view and prioritize the visualizations based on current needs.
 
 % Select Queries
-In the course of analysing benchmark data and identifying noteworthy queries, a deeper inspection of these queries becomes essential. The Benchy Viewer incorporates a versatile hover feature, as introduced in Section \ref{sec:hover-feature}, providing a multi-perspective view of a specific query by highlighting it across various visualisations simultaneously.
+In the course of analysing benchmark data and identifying noteworthy queries, a deeper inspection of these queries becomes essential. The Benchy Viewer incorporates a versatile hover feature, as introduced in Section \ref{sec:hover-feature}, providing a multi-perspective view of a specific query by highlighting it across various visualizations simultaneously.
 
 \begin{figure}[h]
   \centering
@@ -268,12 +268,12 @@ In the course of analysing benchmark data and identifying noteworthy queries, a 
   \label{fig:select-query}
 \end{figure}
 
-Similar to this functionality, the Benchy Viewer provides the option to directly select a specific query. This can be accomplished through various means, such as using a drop-down menu, as illustrated in Figure~\ref{fig:select-query}, or by clicking on a specific query data point within a visualisation (e.g., clicking on a bar in a bar chart or a data point in a scatter plot).
+Similar to this functionality, the Benchy Viewer provides the option to directly select a specific query. This can be accomplished through various means, such as using a drop-down menu, as illustrated in Figure~\ref{fig:select-query}, or by clicking on a specific query data point within a visualization (e.g., clicking on a bar in a bar chart or a data point in a scatter plot).
 
 
-Selecting a query will also result in highlighting the query in all visualisations, similar to the universal hover feature, also depicted in the Figure~\ref{fig:hover-group}. So, it is possible to highlight two distinct queries at once, the selected query and the hovered query, which enables a comparison between two queries using multiple perspectives. 
+Selecting a query will also result in highlighting the query in all visualizations, similar to the universal hover feature, also depicted in the Figure~\ref{fig:hover-group}. So, it is possible to highlight two distinct queries at once, the selected query and the hovered query, which enables a comparison between two queries using multiple perspectives. 
 
-Choosing a specific query results in its highlighting across all visualisations, similar to the universal hover feature demonstrated in Figure~\ref{fig:hover-group}. This enables users to concurrently emphasize two separate queries, the chosen query and a hovered one, enabling a comparative analysis from various angles.
+Choosing a specific query results in its highlighting across all visualizations, similar to the universal hover feature demonstrated in Figure~\ref{fig:hover-group}. This enables users to concurrently emphasize two separate queries, the chosen query and a hovered one, enabling a comparative analysis from various angles.
 
 \subsubsection{Comprehensive Query Insights}
 
@@ -282,7 +282,7 @@ In the analysis workflow facilitated by the Benchy Viewer, once a significant qu
 
 The interactive legend, depicted in Figure~\ref{fig:legend-activate-deactivate}, maintains its presence in this view, allowing users to seamlessly activate or deactivate the display of query plans corresponding to specific database systems.
 
-For clarity and comparative analysis, all activated query plans are rendered in a unified visualisation. Each query plan is presented in its designated system colour. This representation is exemplified in Figure~\ref{fig:query-plan-basic}, where the various query plans are harmoniously displayed for comprehensive comparative scrutiny. This visual approach not only streamlines the analysis process but also contributes to a more intuitive understanding of the comparative performance of queries across different database systems.
+For clarity and comparative analysis, all activated query plans are rendered in a unified visualization. Each query plan is presented in its designated system color. This representation is exemplified in Figure~\ref{fig:query-plan-basic}, where the various query plans are harmoniously displayed for comprehensive comparative scrutiny. This visual approach not only streamlines the analysis process but also contributes to a more intuitive understanding of the comparative performance of queries across different database systems.
 
 \begin{figure}[h]
   \centering
@@ -375,21 +375,21 @@ All these functionalities are provided by the semantic diff tool \textcolor{red}
 
 To offer a well-suited platform for analysing specific performance differences of high complexity, a flexible system is essential for conducting these analytical processes. Such flexibility is crucial for providing tailored solutions to inspect specific aspects of benchmark data.
 
-In this section, we will explore how the Benchy Viewer achieves this functionality, primarily through a drag-and-drop system for visualisation elements. This empowers users to select the necessary visualisations and construct a comprehensive overview.
+In this section, we will explore how the Benchy Viewer achieves this functionality, primarily through a drag-and-drop system for visualization elements. This empowers users to select the necessary visualizations and construct a comprehensive overview.
 
-Subsequently, we will delve deeper into the actual visualisations, examining the flexibility of configuring charts and plots to optimize the perspective of performance data within a specific visualisation.
+Subsequently, we will delve deeper into the actual visualizations, examining the flexibility of configuring charts and plots to optimize the perspective of performance data within a specific visualization.
 
 \subsubsection{Drag and Drop}
-The drag-and-drop system integrated into the Benchy Viewer empowers users to effortlessly rearrange every chart and plot. Beyond the flexibility offered by individual visualisation elements, users can strategically organize visualisations within containers. These containers are essentially thematic sections, each represented by a headline. Users have the flexibility to rename these containers, creating dedicated spaces for specific topics and populating them with relevant charts and plots.
+The drag-and-drop system integrated into the Benchy Viewer empowers users to effortlessly rearrange every chart and plot. Beyond the flexibility offered by individual visualization elements, users can strategically organize visualizations within containers. These containers are essentially thematic sections, each represented by a headline. Users have the flexibility to rename these containers, creating dedicated spaces for specific topics and populating them with relevant charts and plots.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/analytics-drag-and-drop.png}
-  \caption{Flexible interface hub through drag and drop feature for visualisation elements and their containers.}
+  \caption{Flexible interface hub through drag and drop feature for visualization elements and their containers.}
   \label{fig:analytics-drag-and-drop}
 \end{figure}
 
-The versatility of containers allows them to function as distinct analytical sections, housing visualisation elements pertinent to that specific context. Moreover, the dynamic nature of the Benchy Viewer enables users to seamlessly move visualisations between containers, fostering adaptability in organizing and categorizing data. The ability to drag entire containers further enhances this adaptability, enabling users to arrange sections according to their analytical preferences. This dual flexibility, within containers and with container placement, provides users with a robust framework for tailoring their analytical environment to meet the demands of diverse datasets.
+The versatility of containers allows them to function as distinct analytical sections, housing visualization elements pertinent to that specific context. Moreover, the dynamic nature of the Benchy Viewer enables users to seamlessly move visualizations between containers, fostering adaptability in organizing and categorizing data. The ability to drag entire containers further enhances this adaptability, enabling users to arrange sections according to their analytical preferences. This dual flexibility, within containers and with container placement, provides users with a robust framework for tailoring their analytical environment to meet the demands of diverse datasets.
 
 \subsubsection{Analytics Sections}
 
@@ -405,7 +405,7 @@ Users can now efficiently organize and contextualize their analytical elements w
 \end{figure}
 
 % Add chart
-To enrich the content within a container, users can effortlessly incorporate charts and plots using the icon positioned in the right corner of the container's header. This action opens an overlay menu presenting a variety of available plots and charts for inclusion in the container, as showcased in Figure~\ref{fig:analytics-add-chart}. Upon the user's selection of a visualisation element, the analytical section promptly updates, seamlessly integrating the chosen element into its content.
+To enrich the content within a container, users can effortlessly incorporate charts and plots using the icon positioned in the right corner of the container's header. This action opens an overlay menu presenting a variety of available plots and charts for inclusion in the container, as showcased in Figure~\ref{fig:analytics-add-chart}. Upon the user's selection of a visualization element, the analytical section promptly updates, seamlessly integrating the chosen element into its content.
 
 \begin{figure}[h]
   \centering
@@ -414,7 +414,7 @@ To enrich the content within a container, users can effortlessly incorporate cha
   \label{fig:analytics-add-chart}
 \end{figure}
 
-This intuitive process streamlines the augmentation of analytical sections, allowing users to dynamically enhance their workspace with relevant visualisations. The added charts and plots are instantly ready for utilization, fostering a fluid and responsive analytical environment within the Benchy Viewer.\\
+This intuitive process streamlines the augmentation of analytical sections, allowing users to dynamically enhance their workspace with relevant visualizations. The added charts and plots are instantly ready for utilization, fostering a fluid and responsive analytical environment within the Benchy Viewer.\\
 We dive deeper into the utilization and configuration of the charts and plots in \ref{sec:chart-configuration}.
 
 
@@ -428,15 +428,15 @@ Another valuable functionality in the container's header is the visibility toggl
   \label{fig:analytics-section-visibility}
 \end{figure}
 
-The convenience of collapsing containers, coupled with the drag-and-drop feature, enhances overall user comfort and efficiency. This uncomplicated feature significantly enhances clarity and ease of use, especially when managing a substantial number of visualisations and diverse data perspectives.
+The convenience of collapsing containers, coupled with the drag-and-drop feature, enhances overall user comfort and efficiency. This uncomplicated feature significantly enhances clarity and ease of use, especially when managing a substantial number of visualizations and diverse data perspectives.
 
-Initiating the deletion process, another noteworthy feature embedded in the container's header is the delete function. By clicking on the delete icon of a container, users can efficiently remove an analytics section. This action permanently eliminates the container and its content. This straightforward delete function provides a quick and effective way to manage the organizational structure of visualisations.
+Initiating the deletion process, another noteworthy feature embedded in the container's header is the delete function. By clicking on the delete icon of a container, users can efficiently remove an analytics section. This action permanently eliminates the container and its content. This straightforward delete function provides a quick and effective way to manage the organizational structure of visualizations.
 
 
 \subsubsection{Chart Configurations}\label{sec:chart-configuration}
 
-Within the Benchy Viewer, a versatile dashboard serves as a backdrop for seamless interaction with diverse visualisations. Delving into individual visualisation elements, the platform prioritizes adaptability, allowing users to tailor charts and plots to their specific requirements.\\
-We'll explore the capability to select a metric within a chart, demonstrate the flexibility of switching to a table visualisation in the context of maximum speed-up and maximum slow-down, and finally, highlight global chart options.
+Within the Benchy Viewer, a versatile dashboard serves as a backdrop for seamless interaction with diverse visualizations. Delving into individual visualization elements, the platform prioritizes adaptability, allowing users to tailor charts and plots to their specific requirements.\\
+We'll explore the capability to select a metric within a chart, demonstrate the flexibility of switching to a table visualization in the context of maximum speed-up and maximum slow-down, and finally, highlight global chart options.
 
 \begin{figure}[h]
   \centering
@@ -446,21 +446,21 @@ We'll explore the capability to select a metric within a chart, demonstrate the 
 \end{figure}
 
 % - Metrics auswählen
-Every visualisation element within the drag-and-drop dashboard features a header, as illustrated in Figure~\ref{fig:analytics-drag-and-drop}. Beyond the drag-and-drop functionality, the header hosts an options icon, providing access to various configuration settings, as depicted in Figure~\ref{fig:chart-configuration}.\\
+Every visualization element within the drag-and-drop dashboard features a header, as illustrated in Figure~\ref{fig:analytics-drag-and-drop}. Beyond the drag-and-drop functionality, the header hosts an options icon, providing access to various configuration settings, as depicted in Figure~\ref{fig:chart-configuration}.\\
 Within the nested drop-down menu, users can seamlessly tailor their selection of metrics to meet specific needs.
 
-Upon selecting a metric, the chart dynamically updates, presenting the new data within the current visualisation framework. This rapid and flexible construction of charts enhances the user's ability to gain valuable insights swiftly.
+Upon selecting a metric, the chart dynamically updates, presenting the new data within the current visualization framework. This rapid and flexible construction of charts enhances the user's ability to gain valuable insights swiftly.
 
 Similarly, users can quickly duplicate a chart for comparative analysis or delete it to streamline the dashboard. The duplicate function allows for the replication of a chart with its current settings, providing an efficient way to explore variations of the same data.\\
 Conversely, the delete function promptly removes a chart, contributing to a clutter-free and focused visual workspace. These functionalities collectively empower users to fine-tune their analytical environment for a seamless exploration experience.
 
 % - tabele und scatter: speed-up/ slow-down
-In the analytical process of working with the metric pair speed-up and slow-down, seamlessly toggling between maximum speed-up and maximum slow-down is crucial. The Benchy Viewer facilitates this transition through the switch icon integrated into the header of the table visualisation, as exemplified in Figure~\ref{fig:chart-configuration-table-switch}.
+In the analytical process of working with the metric pair speed-up and slow-down, seamlessly toggling between maximum speed-up and maximum slow-down is crucial. The Benchy Viewer facilitates this transition through the switch icon integrated into the header of the table visualization, as exemplified in Figure~\ref{fig:chart-configuration-table-switch}.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/chart-configuration-table-switch.png}
-  \caption{Table visualisation provides the functionality to switch between maximum speed-up and maximum slow-down.}
+  \caption{Table visualization provides the functionality to switch between maximum speed-up and maximum slow-down.}
   \label{fig:chart-configuration-table-switch}
 \end{figure}
 
@@ -468,9 +468,9 @@ A simple click on the switch icon triggers the table to transition to the altern
 
 
 % - Scale: Linear/ Log/ Throuput
-In addition to the nuanced control over individual visualisations, the Benchy Viewer empowers users with global chart options, allowing users to sculpt the visual landscape to their specific analytical requirements.
+In addition to the nuanced control over individual visualizations, the Benchy Viewer empowers users with global chart options, allowing users to sculpt the visual landscape to their specific analytical requirements.
 
-One of the noteworthy features is the ability to globally switch the Y-axis type, as depicted in Figure~\ref{fig:chart-configuration-scale}. This flexibility allows users to choose between linear, logarithmic, and throughput representations, offering diverse perspectives on the benchmark data. Whether aiming for a detailed examination of variations in lower values or emphasizing proportional changes, the global Y-axis type switch ensures that the visualisations align with the user's analytical focus.
+One of the noteworthy features is the ability to globally switch the Y-axis type, as depicted in Figure~\ref{fig:chart-configuration-scale}. This flexibility allows users to choose between linear, logarithmic, and throughput representations, offering diverse perspectives on the benchmark data. Whether aiming for a detailed examination of variations in lower values or emphasizing proportional changes, the global Y-axis type switch ensures that the visualizations align with the user's analytical focus.
 
 \begin{figure}[h]
   \centering
@@ -512,7 +512,7 @@ By seamlessly switching between these Y-axis types globally, users can extract d
 
 
 % - Violin: scatter und boxplot
-The Benchy Viewer also offers customization options for violin plots. Users can choose between representing data inside the violins as individual data points or as a boxplot, as illustrated in Figure~\ref{fig:chart-configuration-violin}. Opting for data points means that each query data is individually represented, providing a wealth of detailed information. On the other hand, selecting the "Boxplot" option replaces individual data points with a summarized boxplot inside the violin. This option streamlines the visualisation, offering clarity by presenting an overview of the data distribution. Users have the flexibility to tailor the representation based on their specific analytical needs.
+The Benchy Viewer also offers customization options for violin plots. Users can choose between representing data inside the violins as individual data points or as a boxplot, as illustrated in Figure~\ref{fig:chart-configuration-violin}. Opting for data points means that each query data is individually represented, providing a wealth of detailed information. On the other hand, selecting the "Boxplot" option replaces individual data points with a summarized boxplot inside the violin. This option streamlines the visualization, offering clarity by presenting an overview of the data distribution. Users have the flexibility to tailor the representation based on their specific analytical needs.
 
 \begin{figure}[h]
   \centering
@@ -523,13 +523,13 @@ The Benchy Viewer also offers customization options for violin plots. Users can 
 
 \subsection{Saving and Sharing the Application State}\label{sec:saving-sharing-state}
 
-One of the valuable features of the Benchy Viewer is its ability to save and share the application state. This encompasses all configurations related to visualisation elements, global options, and dashboard settings. Users can conveniently save their current setup or download it for future reference, as depicted in Figure~\ref{fig:save-upload}.
+One of the valuable features of the Benchy Viewer is its ability to save and share the application state. This encompasses all configurations related to visualization elements, global options, and dashboard settings. Users can conveniently save their current setup or download it for future reference, as depicted in Figure~\ref{fig:save-upload}.
 
 \subsubsection{Downloading Configuration}
 The saved configurations can be downloaded as a file, allowing users to keep a record of specific setups or share them with colleagues. This downloaded file serves as a snapshot of the application state at the time of saving.
 
 \subsubsection{Uploading Configurations}
-To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualisations, and global settings. It's a time-saving feature that ensures a seamless transition back to a specific analytical context.
+To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualizations, and global settings. It's a time-saving feature that ensures a seamless transition back to a specific analytical context.
 
 
 \begin{figure}[h]
