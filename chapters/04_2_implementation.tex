@@ -277,21 +277,26 @@ Lastly, a vital attribute is the metric associated with each visualization eleme
 
 
 
-
-
-
-
-
 \subsection{Query Plan}
+The incorporation of the query plan into the Benchy Viewer relies heavily on the integration of the Query Plan Visualizer \parencite{semantic-diff}. For a more detailed exploration of this integration, refer to Section \ref{sec:semantic-diff-integration}.
+
+The query plan's data structure is divided into two essential parts. First, there are parameters governing the visual aspects and comparison strategies of the query plans. Second, we have the actual query plan data for the database systems.
+
 \subsubsection{Visualization Parameters}\label{sec:query-plan-parameters}
+
+To enhance the user experience, the Query Plan Viewer incorporates a collapsible functionality in every node, denoted by an icon. Recognizing that some users may find this feature unnecessary, an option exists in the settings to disable collapsibility. This choice hides all icons in the nodes, ensuring a cleaner and less distracting look for the query plan.
+
+The matching algorithm parameter is a pivotal component influencing the visualization of query plans in the Benchy Viewer. This property, structured as an enum, provides a spectrum of options to tailor the matching algorithm based on specific visualization needs. It is accessible in the header when the Query Plan View is active, as depicted in Figure~\ref{fig:query-plan-slider}. When set to "none", it allows query plans to be displayed independently, side by side, without any comparison. Alternatively, choosing "top down" or "bottom up" initiates matching algorithms that prioritize either a top-down or bottom-up approach, optimizing clarity in specific scenarios. The "top down/bottom up" option combines both methods, offering a balanced approach.
+
+Lastly, users have the option to customize the visualization of edges within the query plan. By default, edges are presented in horizontal and vertical directions, reminiscent of a classical tournament tree. However, when dealing with intricate query plans or non-planar graphs, overlapping edges may compromise clarity. To address this, users can modify the edge style. This customization allows edges to deviate from strict horizontal or vertical orientations, adopting a more dynamic style that allocates additional space to each edge. This flexibility ensures that the visual representation of edges aligns with the structure of the query plans, contributing to a more informative visualization.
+
+
+
 \subsubsection{Query Plan Data Structure}\label{sec:query-plan-structure}
 
+During the import of benchmark data into the Benchy Viewer, the query plan metadata undergoes a transformation process to populate a structured object. This involves parsing the raw metadata provided in the benchmark results, which includes details such as the operator ID, estimated cardinality, and exact cardinality.
 
-
-
-
-
-
+The data transformation involves creating instances that represent each element of the query plan, forming a tree structure to reflect the hierarchical arrangement. This establishes relationships between elements to capture the flow and nesting of operations. System-specific details are retained within each node throughout this transformation. This structured representation enables users to navigate the intricacies of the query execution flow.
 
 
 
