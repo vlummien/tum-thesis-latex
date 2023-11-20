@@ -306,9 +306,56 @@ The data transformation involves creating instances that represent each element 
 
 
 \section{Integration of Plotly-React for Data Visualization}
-\subsection{Types of Plots and Charts}
-\subsection{Hover Feature}
-\subsection{Selected Query Feature}
+For visualizing the data within plots and charts, the graphing library \textit{Plotly} \parencite{plotly}, was used. Plotly is a versatile and interactive graphing library widely used for data visualization. Its compatibility with languages like JavaScript, through \textit{Plotly JavaScript} \parencite{plotly-js}, enhances its appeal for web-based applications. With its features and user-friendly interface, Plotly is a solid choice for rendering interactive visual representations of data.
+
+\subsection{General Features}
+Plotly comes out of the box with a bunch of features that align with the interactability of the Benchy Viewer.
+
+Its intuitive design allows users to effortlessly scroll, zoom, and pan around plots, offering a dynamic exploration of the data. The ability to reset zoom provides added convenience, ensuring users can navigate through intricate details with ease.\\
+Plotly further extends its functionality by enabling users to download the current representation as a PNG file, facilitating seamless sharing and documentation of visual insights.\\
+The interactive hover feature adds another layer of depth to the visualization, allowing users to access specific data points with a simple cursor hover. The hover feature in Plotly was used to form the global hover feature, which we will discuss further in \ref{sec:plotly-hover}.
+
+
+
+
+
+\subsection{Integration of the Global Hover Feature}\label{sec:plotly-hover}
+
+Plotly offers great customization capabilities, particularly when interacting with data points through the hover feature. When hovering over data points, Plotly provides detailed information, including the value and index. This hover information undergoes filtering, where the resulting query number is sent to the corresponding data slice. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/global-hover.png}
+  \caption{Distribution of the Hover Information}
+  \label{fig:global-hover}
+\end{figure}
+
+Subsequently, the UI is automatically updated, and the hover information is distributed to all Plotly components. This dynamic process ensures that the queries associated with the provided information are highlighted, creating a synchronized and insightful data exploration experience. For a visual representation of this data flow, refer to Figure~\ref{fig:global-hover}.
+
+\subsection{Layout and Data}
+To ensure seamless integration and synchronized functionality with the Benchy Viewer, Plotly components are encapsulated within a specialized wrapper component. This wrapper, illustrated in Figure~\ref{fig:chart-wrapper}, incorporates essential features.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/chart-wrapper.png}
+  \caption{Visualisation Item Wrapper Component provides a header with functionalities to each Plotly Component.}
+  \label{fig:chart-wrapper}
+\end{figure}
+
+Firstly, it constructs the chart header, facilitating a drag-and-drop interface that seamlessly aligns with the Analytics Dashboard's drag-and-drop functionality. The header also encompasses chart settings, including a nested menu where users can select metrics and perform basic actions like duplication or deletion. Additionally, a descriptive label elucidates the content of the visualization element.
+
+All the information presented in the wrapper is orchestrated by the controller, which manages state changes, such as when a user selects a different metric in the chart settings.\\
+The controller is also responsible for preparing the data for visualization which involves the conversion of benchmark data into a data structure compatible with Plotly. This process may be divided into multiple stages, especially when utilizing metrics like speed-up and slow-down, which require additional calculations before presenting data to Plotly.\\
+Calculations for proper scaling on the x-axis and y-axis are performed, taking into account the dataset's highest values. Furthermore, the controller constructs appropriate axis properties, such as the proper tick values, based on the visualization type and chart settings.
+
+A notable consideration is that Plotly components expect concrete values for width and height. To accommodate varying screen sizes and dynamic resizing, the Benchy Viewer employs the React concept \textit{createContext} API \parencite{createContext} to form the \texttt{Width Context}. The implemented mechanism monitors the current width of the component and the \texttt{Width Context} propagates it down the component hierarchy. The mechanism, attuned to window resizing events, ensures that all components using the width prop from the Width provider are updated whenever the window size changes. This dynamic approach enables Plotly components to adapt effectively to different screen sizes and resizing scenarios.
+
+
+
+
+
+
+
 
 \section{Integration of semantic-diff-tool}\label{sec:semantic-diff-integration}
 \subsection{Business Logic}
