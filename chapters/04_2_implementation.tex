@@ -11,16 +11,15 @@ Finally, we examine the application's pages: Analytics Dashboard, Query Plan Vie
 
 \subsection{User Interface Design Styles}
 \subsubsection{Material UI}
-% MUI Zitate 
-% sx Style Properties
-The Benchy Viewer's design is rooted in the principles of Material Design\textcolor{red}{Zitat}, emphasizing a sleek and consistent user interface that aligns with modern design standards.\\
-To ensure a cohesive and user-centric design, the application makes extensive use of predefined components from the Material UI framework. This includes buttons, inputs, toggles, sliders, data grids, icons, drop-down menus, and tooltips.
 
-The inclusion of Material Design components contributes to an interface that is both user-friendly and familiar. Users can easily navigate through buttons, toggles, and sliders, thanks to the standardized styling that Material UI provides.
+The Benchy Viewer's design is rooted in the principles of Material Design \parencite*{material-design}, emphasizing a sleek and consistent user interface that aligns with modern design standards.\\
+To ensure a cohesive and user-centric design, the application makes extensive use of predefined components from the Material UI Framework \parencite*{mui}. In our application, this includes buttons, inputs, toggles, sliders, data grids, icons, drop-down menus, and tooltips.
+
+The inclusion of Material Design components contributes to an interface that is both user-friendly and familiar. Users can easily navigate through these components, thanks to the standardized styling that Material UI provides.
 
 Icons within the Benchy Viewer serve as visual cues, representing familiar symbols that aid users in quickly grasping the functions they perform. This visual clarity aligns with Material Design's emphasis on intuitive iconography.
 
-Settings options, presented in dropdown menus and other interfaces, follow Material Design practices. The design prioritizes user intuition, allowing individuals to interact with the application seamlessly without relying on extensive textual explanations.
+Settings options, presented in drop-down menus and other interfaces, follow Material Design practices. The design prioritizes user intuition, allowing individuals to interact with the application seamlessly without relying on extensive textual explanations.
 
 By aligning with Material Design principles, the Benchy Viewer achieves a design that not only meets aesthetic standards, but also prioritizes user understanding and interaction efficiency. The incorporation of familiar components enhances the overall usability and accessibility of the application.
 
@@ -48,7 +47,7 @@ While the overall design adheres to a subdued color palette, the visual elements
 \end{figure}
 
 To enhance user experience, the Benchy Viewer incorporates immediate feedback mechanisms. When users hover over interactive elements, such as buttons or inputs, accent colors dynamically adjust, providing a visual cue of the interactive nature of the element. Additionally, the mouse representation undergoes subtle changes, reinforcing the responsiveness of the interface.\\
-Additionally, the Benchy Viewer employs the Roboto font \textcolor{red}{Zitat} for a clean and modern look, enhancing readability and contributing to a user-friendly interface.
+Additionally, the Benchy Viewer employs the Roboto font \parencite{roboto} for a clean and modern look, enhancing readability and contributing to a user-friendly interface.
 
 
 \subsection{Page Structure and Navigation}\label{sec:page-structure}
@@ -69,7 +68,7 @@ The Benchy Viewer adopts a standard web view with a sidebar, leveraging the fami
   \label{fig:app}
 \end{figure}
 
-The sidebar serves as the central hub for navigating different sections of the application, while always staying present. By providing dedicated buttons, users can effortlessly transition between pages, ensuring quick access to specific functionalities and data views. Additionally, the navigation button of the current page is highlighted with the accent color.
+The sidebar serves as the central hub for navigating different sections of the application, while always staying present. By providing a navigation button section, users can effortlessly transition between pages, ensuring quick access to specific functionalities and data views. Additionally, the navigation button of the current page is highlighted with the accent color.
 
 Below, the users have the possibility to import benchmark data or explore the application's capabilities using demo data. This feature facilitates a hands-on experience without the immediate need to provide personal datasets, making it convenient for users to evaluate the application's functionalities.
 
@@ -96,26 +95,26 @@ The Sidebar and Header form the foundation of the user interface, while the rema
   \centering
   \begin{subfigure}[b]{0.3\linewidth}
     \includegraphics[width=\linewidth]{figures/app.png}
-    \caption{Analytics dashboard.}
+    \caption{Analytics Dashboard.}
       \label{fig:app-page}
   \end{subfigure}
   \hspace{0.5cm} % Adjust the horizontal space between the figures
   \begin{subfigure}[b]{0.3\linewidth}
     \includegraphics[width=\linewidth]{figures/app-query-plan.png}
-    \caption{Query plan view.}
+    \caption{Query Plan View.}
       \label{fig:app-query-plan}
   \end{subfigure}
   \hspace{0.5cm} % Adjust the horizontal space between the figures
   \begin{subfigure}[b]{0.3\linewidth}
     \includegraphics[width=\linewidth]{figures/app-data-viewer.png}
-    \caption{Input file viewer.}
+    \caption{Input File Viewer.}
       \label{fig:app-data-viewer}
   \end{subfigure}
-  \caption{From left to right: Analytics dashboard page, query plan page, and input file viewer page}
+  \caption{From left to right: Analytics Dashboard page, Query Plan View page, and Input File Viewer page.}
   \label{fig:pages}
 \end{figure}
 
-The Analytics Dashboard page features the drag-and-drop system for visualising elements and their containers. This page serves as the hub for analysing benchmark data, offering charts and plots to explore queries from diverse perspectives.
+The Analytics Dashboard page features the drag-and-drop system for visualizing elements and their containers. This page serves as the hub for analysing benchmark data, offering charts and plots to explore queries from diverse perspectives.
 
 Upon identifying significant queries using the analytics dashboard, users often transition to the Query Plan page. This page serves as a central hub for comparing distinct query plans across various database systems. 
 
@@ -137,7 +136,7 @@ In contrast, the Input File Viewer page offers a minimalist perspective. Tailore
 
 \section{Data Structure}
 Unraveling the complexities of the Benchy Viewer necessitates a deep dive into its fundamental data structure, a cornerstone shaping the app's functionality and user interaction.\\
-Our exploration commences with an examination of the broad project data structure, leading to a comprehensive exploration of each intricate facet of this structural canvas.
+Our exploration commences with an examination of the broad project data structure, leading to a comprehensive exploration of each intricate facet of the global application state.
 
 \subsection{Overall Project Structure}
 
@@ -147,7 +146,7 @@ The Benchy Viewer embodies a robust project structure that leverages React, glob
   \vspace{0.5cm}
   \centering
   \includegraphics[width=0.5\linewidth]{figures/project-structure.png}
-  \caption{Project Structure Hierarchy}
+  \caption{Project Structure Hierarchy.}
   \label{fig:project-structure}
 \end{figure}
 
@@ -161,12 +160,12 @@ In general, it detects impure calculations in the context of component states an
 
 \subsubsection{State Management with Redux}
 The Redux Provider in the Benchy Viewer, built using the Redux~Framework~\parencite{Redux}, serves as the central hub for managing the application's state. It acts as a shared space where different parts of the application can store and retrieve data efficiently.\\
-Utilizing the capabilities of \textit{Redux Toolkit}\parencite{redux-toolkit}, the Redux Provider supplies the global state across the entire application. This global state is compartmentalized into five distinct slices, illustrated in Figure~\ref{fig:global-state}, each serving a unique purpose.
+Utilizing the capabilities of \textit{Redux Toolkit}~\parencite{redux-toolkit}, the Redux Provider supplies the global state across the entire application. This global state is compartmentalized into five distinct slices, illustrated in Figure~\ref{fig:global-state}, each serving a unique purpose.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/global-state.png}
-  \caption{Application State Compartements}
+  \caption{Application State Compartements.}
   \label{fig:global-state}
 \end{figure}
 
@@ -217,7 +216,7 @@ Throughout the importation process, the input file undergoes parsing and transfo
 
 \subsubsection{Data Accessibility}
 
-After the data import, the benchmark data is accessible to all visualization elements across the whole Benchy Viewer. This includes all visualization elements within the Analytics Dashboard, the File Viewer, and the Query Plan View.
+After the data import, the benchmark data is accessible to all visualization elements across the whole application. This includes all visualization elements within the Analytics Dashboard, the Input File Viewer, and the Query Plan View.
 
 The activation flag controls the visibility of the system data of a whole database system in the visualizations. This is accessed through the header's legend toggles, where users can control the activation or deactivation of database systems.
 
@@ -227,7 +226,7 @@ Additionally, this state holds the demo data, which is initialised on the start 
 
 \subsection{Global Settings}\label{sec:global-settings}
 
-In the Benchy Viewer, the Global Settings serve as a central hub for interactive and customizable data exploration. Features like hover and selected queries offer real-time insights, while selecting a baseline system deepens understanding for comparative analysis. Visual configurations provide the power to mould data representation, aligning with user preferences. In essence, the Global Settings act as the control center, empowering users for dynamic and tailored data exploration.
+In the Benchy Viewer, the global settings serve as a central hub for interactive and customizable data exploration. Features like hover and selected queries offer real-time insights, while selecting a baseline system deepens understanding for comparative analysis. Visual configurations provide the power to mould data representation, aligning with user preferences. In essence, the global settings act as the control center, empowering users for dynamic and tailored data exploration.
 
 \subsubsection{Hovered Query}
 
@@ -271,7 +270,7 @@ Within each container, a list of visualization elements is stored, aligning with
 
 These visualization elements are distinguished by a label in their header, signifying their content.\\
 Furthermore, each element is characterized by a property denoting its visual type, such as a bar chart or violin plot.\\
-Lastly, a vital attribute is the metric associated with each visualization element, ranging from execution time to compilation time. In the UI, this is accessible through the chart menu, see \ref{sec:chart-configuration}.
+Lastly, a vital attribute is the metric associated with each visualization element, such as execution time or compilation time. In the UI, this is accessible through the chart menu, see \ref{sec:chart-configuration}.
 
 
 
@@ -284,7 +283,8 @@ The query plan's data structure is divided into two essential parts. First, ther
 
 \subsubsection{Visualization Parameters}\label{sec:query-plan-parameters}
 
-To enhance the user experience, the Query Plan Viewer incorporates a collapsible functionality in every node, denoted by an icon. Recognizing that some users may find this feature unnecessary, an option exists in the settings to disable collapsibility. This choice hides all icons in the nodes, ensuring a cleaner and less distracting look for the query plan.
+To enhance the user experience, the Query Plan Viewer incorporates a collapsible functionality in every node, denoted by an icon. The activation of this functionality at a specific node will collabse its whole subtree.\\
+Recognizing that some users may find this feature unnecessary, an option exists in the settings to disable collapsibility. This choice hides all icons in the nodes, ensuring a cleaner and less distracting look for the query plan.
 
 The matching algorithm parameter is a pivotal component influencing the visualization of query plans in the Benchy Viewer. This property, structured as an enum, provides a spectrum of options to tailor the matching algorithm based on specific visualization needs. It is accessible in the header when the Query Plan View is active, as depicted in Figure~\ref{fig:query-plan-slider}. When set to "none", it allows query plans to be displayed independently, side by side, without any comparison. Alternatively, choosing "top down" or "bottom up" initiates matching algorithms that prioritize either a top-down or bottom-up approach, optimizing clarity in specific scenarios. The "top down/bottom up" option combines both methods, offering a balanced approach.
 
@@ -311,7 +311,7 @@ For visualizing the data within plots and charts, the graphing library \textit{P
 \subsection{General Features}
 Plotly comes out of the box with a bunch of features that align with the interactability of the Benchy Viewer.
 
-Its intuitive design allows users to effortlessly scroll, zoom, and pan around plots, offering a dynamic exploration of the data. The ability to reset zoom provides added convenience, ensuring users can navigate through intricate details with ease.\\
+Plotly allows users to effortlessly scroll, zoom, and pan around plots, offering a dynamic exploration of the data. The ability to reset zoom provides added convenience, ensuring users can navigate through intricate details with ease.\\
 Plotly further extends its functionality by enabling users to download the current representation as a PNG file, facilitating seamless sharing and documentation of visual insights.\\
 The interactive hover feature adds another layer of depth to the visualization, allowing users to access specific data points with a simple cursor hover. The hover feature in Plotly was used to form the global hover feature, which we will discuss further in \ref{sec:plotly-hover}.
 
@@ -321,24 +321,24 @@ The interactive hover feature adds another layer of depth to the visualization, 
 
 \subsection{Integration of the Global Hover Feature}\label{sec:plotly-hover}
 
-Plotly offers great customization capabilities, particularly when interacting with data points through the hover feature. When hovering over data points, Plotly provides detailed information, including the value and index. This hover information undergoes filtering, where the resulting query number is sent to the corresponding data slice. 
+Plotly offers great customization capabilities to developers, particularly when interacting with data points through the hover feature. When hovering over data points, Plotly provides detailed information, including the value and index. This hover information undergoes filtering, where the resulting query number is sent to the corresponding data slice. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/global-hover.png}
-  \caption{Distribution of the Hover Information}
+  \caption{Distribution of the Hover Information.}
   \label{fig:global-hover}
 \end{figure}
 
 Subsequently, the UI is automatically updated, and the hover information is distributed to all Plotly components. This dynamic process ensures that the queries associated with the provided information are highlighted, creating a synchronized and insightful data exploration experience. For a visual representation of this data flow, refer to Figure~\ref{fig:global-hover}.
 
-\subsection{Layout and Data}
+\subsection{Wrapper Component providing necessary Properties}
 To ensure seamless integration and synchronized functionality with the Benchy Viewer, Plotly components are encapsulated within a specialized wrapper component. This wrapper, illustrated in Figure~\ref{fig:chart-wrapper}, incorporates essential features.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/chart-wrapper.png}
-  \caption{Visualisation Item Wrapper Component provides a header with functionalities to each Plotly Component.}
+  \caption{Wrapper Component Structure.}
   \label{fig:chart-wrapper}
 \end{figure}
 
@@ -348,7 +348,7 @@ All the information presented in the wrapper is orchestrated by the controller, 
 The controller is also responsible for preparing the data for visualization which involves the conversion of benchmark data into a data structure compatible with Plotly. This process may be divided into multiple stages, especially when utilizing metrics like speed-up and slow-down, which require additional calculations before presenting data to Plotly.\\
 Calculations for proper scaling on the x-axis and y-axis are performed, taking into account the dataset's highest values. Furthermore, the controller constructs appropriate axis properties, such as the proper tick values, based on the visualization type and chart settings.
 
-A notable consideration is that Plotly components expect concrete values for width and height. To accommodate varying screen sizes and dynamic resizing, the Benchy Viewer employs the React concept \textit{createContext} API \parencite{createContext} to form the \texttt{Width Context}. The implemented mechanism monitors the current width of the component and the \texttt{Width Context} propagates it down the component hierarchy. The mechanism, attuned to window resizing events, ensures that all components using the width prop from the Width provider are updated whenever the window size changes. This dynamic approach enables Plotly components to adapt effectively to different screen sizes and resizing scenarios.
+A notable consideration is that Plotly components expect concrete values for width and height. To accommodate varying screen sizes and dynamic resizing, the Benchy Viewer employs the React concept \textit{createContext} API \parencite{createContext} to form the \texttt{Width Context}. The implemented mechanism monitors the current width of the component and the \texttt{Width Context} propagates it down the component hierarchy. The mechanism, attuned to window resizing events, ensures that all components using the width prop from the \texttt{Width Context} are updated whenever the window size changes. This dynamic approach enables Plotly components to adapt effectively to different screen sizes and resizing scenarios.
 
 
 
