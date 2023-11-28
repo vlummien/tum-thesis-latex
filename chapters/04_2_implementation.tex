@@ -13,7 +13,7 @@ Finally, we examine the application's pages: Analytics Dashboard, Query Plan Vie
 \subsubsection{Material UI}
 
 The Benchy Viewer's design is rooted in the principles of Material Design \parencite*{material-design}, emphasizing a sleek and consistent user interface that aligns with modern design standards.\\
-To ensure a cohesive and user-centric design, the application makes extensive use of predefined components from the Material UI Framework \parencite*{mui}. In our application, this includes buttons, inputs, toggles, sliders, data grids, icons, drop-down menus, and tooltips.
+To ensure a cohesive and user-centric design, the application makes extensive use of predefined components from Material UI \parencite*{mui}. In our application, this includes buttons, inputs, toggles, sliders, data grids, icons, drop-down menus, and tooltips.
 
 The inclusion of Material Design components contributes to an interface that is both user-friendly and familiar. Users can easily navigate through these components, thanks to the standardized styling that Material UI provides.
 
@@ -159,7 +159,7 @@ In general, it detects impure calculations in the context of component states an
 
 
 \subsubsection{State Management with Redux}
-The Redux Provider in the Benchy Viewer, built using the Redux~Framework~\parencite{Redux}, serves as the central hub for managing the application's state. It acts as a shared space where different parts of the application can store and retrieve data efficiently.\\
+The Redux Provider in the Benchy Viewer, built using Redux~\parencite{Redux}, serves as the central hub for managing the application's state. It acts as a shared space where different parts of the application can store and retrieve data efficiently.\\
 Utilizing the capabilities of \textit{Redux Toolkit}~\parencite{redux-toolkit}, the Redux Provider supplies the global state across the entire application. This global state is compartmentalized into five distinct slices, illustrated in Figure~\ref{fig:global-state}, each serving a unique purpose.
 
 \begin{figure}[h]
@@ -357,7 +357,39 @@ A notable consideration is that Plotly components expect concrete values for wid
 
 
 
-\section{Integration of semantic-diff-tool}\label{sec:semantic-diff-integration}
+\section{Integration of the Query Plan Visualizer}\label{sec:semantic-diff-integration}
+Integrating the Query Plan Visualizer into the Benchy Viewer presented a challenge due to differing global state management systems. The Query Plan Visualizer uses React Sweet State \parencite*{react-sweet-state}, while the Benchy Viewer relies on Redux \parencite*{Redux}.\\
+In the Business Logic subsection, we discuss the conversion process from React Sweet State to Redux. This involved a top-level restructuring to align with Redux's global state management, while maintaining application functionality.
+
+In the UI subsection, both tools utilize the Material UI framework \parencite*{mui}, facilitating seamless code reuse. We highlight the reuse of Material UI components, like sliders, and the unique features of the Benchy Viewer's header, emphasizing code consistency with the reuse of components.
+
+
 \subsection{Business Logic}
-\subsection{Settings}
+
+The integration of the Query Plan Visualizer into the Benchy Viewer introduced a challenge due to the disparity in the global state management systems used. The Query Plan Visualizer relies on React Sweet State for managing its state, encompassing everything from the actual query plan data to various configuration settings. On the other hand, the Benchy Viewer employs Redux for managing the global state of the entire application.\\
+To maintain coherence and prevent the use of multiple state management tools within the application, a crucial step was to convert the relevant parts of the React Sweet State to Redux. This conversion process was a key challenge given that React Sweet State and Redux, while both state management libraries for React, have distinct approaches and underlying concepts.
+
+The conversion process from React Sweet State to Redux involved a top-level restructuring of the state management logic. In React Sweet State, the state management is more localized and hook-based, catering to the component's specific needs. On the other hand, Redux operates with a global store and relies on actions and reducers for state modifications.
+
+To migrate, we first identified the distinct states managed by React Sweet State and refactored them into Redux actions and reducers. This required careful consideration of how data flows through the application and the structure of the Redux store. The hook-based state management in React Sweet State was replaced with action dispatches and selectors in Redux.
+
+Overall, the conversion aimed at preserving the application's functionality while aligning with the global state management paradigm of Redux. The resulting Redux implementation provides a successfully centralized state management system.
+
+
 \subsection{UI}
+
+The integration of both the Benchy Viewer and the Query Plan Visualizer with the Material UI framework facilitates a seamless UI integration process by allowing the reuse of substantial portions of the source code. Specifically, the Benchy Viewer has effectively repurposed various Material UI components, including sliders utilized for configuring the query plan and nodes in constructing the query plan.
+
+Despite the Query Plan Visualizer boasting an extensive header with a multitude of functionalities, the Benchy Viewer adheres to a minimalist design, featuring only the most essential operations. To maintain this design philosophy, we identified the pivotal configuration features for the query plan within the Benchy Viewer's header. Any additional configurations were logically placed in the settings menu, accessible through the sidebar. In the Query Plan Visualizer, the activation and deactivation of query plans for database systems were accomplished using a Material UI Chip component \parencite{mui-chip}. While replicating this functionality was an option, we opted for reusing the header legend from the Analytics Dashboard, as depicted in Figure~\ref{fig:legend-conversion}. For this functionality, the legend provides its intuitive toggles with the corresponding system color.
+
+\begin{figure}[h]
+  \centering
+  \vspace{0.5cm}
+  \includegraphics[width=0.8\linewidth]{figures/legend-conversion.png}
+  \caption{Legend Conversion: From the original component of the Query Plan Visualizer \parencite*{semantic-diff} on the left to the interactive legend employed by the Benchy Viewer on the right.}
+  \vspace{0.5cm}
+  \label{fig:legend-conversion}
+\end{figure}
+
+Beyond these shared features, the Benchy Viewer's header provides the ability to control the matching algorithm, influencing the visualization of query plans. For instance, users can adopt a top-down approach to construct the query plan. The original tool implemented this with a Material UI Slider \parencite{mui-slider}, and to maintain code consistency and streamline development, we chose to employ the same Material UI Slider, thereby reusing significant portions of the source code associated with this particular functionality within the UI.
+
