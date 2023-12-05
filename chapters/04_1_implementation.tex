@@ -17,35 +17,53 @@ Finally, we examine the capability of the system to facilitate collaboration and
 Visualizing Benchmark Data includes multiple aspects. It involves the import of the actual data, where a proper way of importing the data should be provided. We also cover the utilized plots and charts for the data visualization. In addition to visualization, we offer a comprehensive table view of the data.
 
 
-\subsubsection{Charts and Plots}
+\subsubsection{Baseline System}
 
-We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database systems included in the benchmark data are presented as colored toggles, allowing users to activate or deactivate their appearance in the visualization. We dive deeper into the interactive legend in \ref{sec:query-analytics}.
+Conducting benchmark performance analysis often necessitates a comparative approach between a chosen system and other competing systems. The Benchy Viewer facilitates this by enabling the selection of a baseline system from one of the database systems included in the benchmark data, as shown in Figure~\ref{fig:select-baseline-system}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\linewidth]{figures/select-baseline-system.png}
+  \caption{Selection of the Baseline System through a Drop-Down Menu.}
+  \label{fig:select-baseline-system}
+\end{figure}
+
+
+This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualizations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slowdown and speedup metrics, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualizations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
+
+
+\subsubsection{Global Legend}
+
+We aim to offer a dashboard containing multiple data views. To prevent UI clutter, a universal legend of database system instances is suitable, eliminating the necessity to display a legend in every chart. In the legend depicted in Figure~\ref{fig:legend} all database system instances included in the benchmark data are presented as colored toggles, allowing users to activate or deactivate their appearance in the visualization. We dive deeper into the interactive legend in \ref{sec:query-analytics}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/legend.png}
-    \caption{Gobal Legend showing all participating Database Systems.}
+    \caption{Global Legend showing all participating Database System Variants.}
     \label{fig:legend}
   \end{figure}
 
 
 
-When initiating the analytical process with the Benchy Viewer after importing the benchmark data, it may be beneficial to start with a general and straightforward overview of the benchmark data for quickly gaining an understanding of the general performance standings of the database systems.\\
-Within the Benchy Viewer, this overview is effectively conveyed through the relative performance visualization, as depicted in Figure~\ref{fig:relative-performance}. This chart displays, on the Y-Axis, the relative performance of each system in percentage compared to the best-performing system in the benchmark data. The X-Axis lists and represents every database system contained in the benchmark data.
+\subsubsection{Relative Performance}
+
+When initiating the analytical process with the Benchy Viewer after importing the benchmark data, it may be beneficial to start with a general and straightforward overview of the benchmark data to quickly gain an understanding of the general performance standings of the database system instances.\\
+Within the Benchy Viewer, this overview is effectively conveyed through the relative performance visualization, as depicted in Figure~\ref{fig:relative-performance}. The X-axis lists the different database system instances, while the Y-axis depicts the relative performance of each system instance as a percentage compared to the best-performing system instance. Each bar corresponds to the total time spent by a system instance to complete all benchmark queries.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1\linewidth]{figures/bsp-relative-performance.png}
-  \caption{Bar chart visualizes the relative performance of all systems compared to the best performing system.}
+  \caption{Bar Chart Visualization of the Relative Performance compared to the Best Performing System Variant.}
   \label{fig:relative-performance}
 \end{figure}
 
-After obtaining this initial overview, users can quickly identify the system marked with the red color as the benchmark, as it processes all queries faster than all other systems. In this visualization, this system is set as the benchmark with 100\% performance, providing a clear reference point for relative comparisons.\\
+After obtaining this initial overview, users can quickly identify the system variant marked with the red color as the benchmark, as it processes all queries faster than all other systems. In this visualization, this system variant is set as the benchmark with 100\% performance, providing a clear reference point for relative comparisons.\\
 This chart serves as a valuable starting point for further in-depth analyses and allows users to grasp the overall performance landscape before delving into specific metrics or queries.
 
-In the next phase of the analysis process, we delve into two crucial aspects: compilation and execution. Compilation is the phase where source code is translated into machine code, preparing it for execution. It is a crucial step that impacts the overall performance of the system. On the other hand, execution is the phase where the compiled code is run on the system. This step involves the actual processing of the instructions and the generation of results. The time spent in the execution phase is a key factor in determining the system's efficiency in handling tasks.
 
-To understand how much time each database system allocates to these processes, the Benchy Viewer offers a stacked bar chart, illustrated in Figure~\ref{fig:execution-compilation}. Here, one section of the bar signifies the time spent in the compilation step, while the other represents the time spent in the execution step.
+\subsubsection{Comparison between Compilation and Execution}
+
+In the next phase of the analysis process, we delve into two crucial aspects: compilation and execution. To understand how much time each database system allocates to these processes, the Benchy Viewer offers a stacked bar chart, illustrated in Figure~\ref{fig:execution-compilation}. Here, one section of the bar signifies the time spent in the compilation step, while the other represents the time spent in the execution step.
 
 \begin{figure}[h]
   \centering
@@ -56,9 +74,14 @@ To understand how much time each database system allocates to these processes, t
 
 Using solely the ratio of the two different steps, without taking into account the overall performance, would present an incomplete picture of the balance between the two process steps compared to the better-performing systems. Therefore, this chart complements the relative performance visualization discussed earlier. By incorporating information about the overall performance, it aims to offer a comprehensive understanding while illustrating the equilibrium between compilation and execution for each system.
 
-In this example, a comparison is made between two database systems, with the Y-Axis indicating the relative performance and the X-Axis listing different database systems. Umbra stands out as the best-performing system, with its bar reaching the 100\% level. In contrast, Hyper attains 45\% of Umbra's performance. When hovering over one of the process steps, the chart displays the percentage of the total time spent by the system in that specific step. For instance, Hyper allocated 18.23\% of the entire process to the compilation step, while Umbra spent 27\% on this phase.
+In this example, a comparison is made between two database systems, with the Y-Axis indicating the relative performance and the X-Axis listing different database system instances. A bar in this representation signifies the cumulative time allocated to each variant of the database system for completing all benchmark queries. Distinguishing itself from the bar chart in Figure~\ref*{fig:relative-performance}, this visualization employs stacked bars. Each stack consists of two components: one indicating the time devoted to compilation processing, and the other denoting the time dedicated to execution processing.
+
+Umbra stands out as the best-performing system, with its bar reaching the 100\% level. In contrast, Hyper attains 45\% of Umbra's performance. When hovering over one of the process steps, the chart displays the percentage of the total time spent by the system in that specific step. For instance, Hyper allocated 18.23\% of the entire process to the compilation step, while Umbra spent 27\% on this phase.
 
 Hence, the stacked bar chart in the Benchy Viewer offers a consolidated view of how each database system allocates time between compilation and execution steps. Its integration of the relative performance metric ensures a balanced understanding of system efficiency, preventing oversights from focusing solely on step ratios. With clear visual distinctions and the ability to compare multiple systems, this chart enhances analytical insights into performance disparities and offering an aerial view of compilation and execution.
+
+
+\subsubsection{Single Query Performance Bar Chart}
 
 The preceding visualization solution \textcolor{red}{Referenz auf PDF} shows essential benchmark visualizations, offering both a comprehensive overview of all queries and a detailed examination of each individual query.
 
@@ -75,36 +98,41 @@ Bar plots stand out as a versatile visualization method, particularly when taske
 With each query distinctly represented by a separate bar, variations in performance become immediately apparent.\\
 This quality proves especially valuable for our objective of identifying outliers, as these exceptional values are easily noticeable.
 
+
+\subsubsection{Violin Plot}
+
 To facilitate a quick and clear overview of all queries, violin charts are employed. These charts not only provide an initial glimpse of the overall system performance but also offer distribution insights, including the shape and density of the data. They can also be combined with boxplots to get a concise summary of the distribution of the results, displaying key statistics such as the median and quartiles.
 
+
+
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{figures/bsp-violin-boxplot-points.png}
-    \caption{Violin charts visualize the totals time in ms of different queries. The left variant contains a boxplot and the right variant contains all data points.}
-    \label{fig:violin-chart}
-  \end{figure}
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{figures/bsp-violin-boxplot.png}
+    \caption{Violin Plot combined with a Boxplot.}
+      \label{fig:violin-boxplot}
+  \end{subfigure}
+  \hspace{1cm} % Adjust the horizontal space between the figures
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{figures/bsp-violin-points.png}
+    \caption{Violin Plot combined with Data Points.}
+      \label{fig:app-violin-points}
+  \end{subfigure}
+  \caption{Available Violin Plot Variants.}
+  \label{fig:violin-chart}
+\end{figure}
 
 Within the Benchy Viewer violin plots that contain data points, as shown in Figure~\ref{fig:violin-chart} on the right side, additionally allow you to hover over a data point. This action highlights the corresponding query in the violins of the other database systems. We will explore this hover feature further in \ref{sec:hover-feature}.
 
 
-Conducting benchmark performance analysis often necessitates a comparative approach between a chosen system and other competing systems. The Benchy Viewer facilitates this by enabling the selection of a baseline system from one of the database systems included in the benchmark data, as shown in Figure~\ref{fig:select-baseline-system}.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.3\linewidth]{figures/select-baseline-system.png}
-  \caption{A drop-down menu that allows to select a baseline system.}
-  \label{fig:select-baseline-system}
-\end{figure}
-
-
-This functionality proves useful for assessing how the performance of the chosen baseline system compares to others, aiding in the identification of strengths, weaknesses, and potential optimization areas. It forms a foundational step in the detailed analysis provided by the Benchy Viewer. Several visualizations in the application utilize the baseline system, including the table view and scatter plot for inspecting the slowdown and speedup metric, and the bar chart showcasing the performance delta for each query from the perspective of the baseline system. All these visualizations depend on a baseline system, making this functionality crucial for a comprehensive performance analysis.
+\subsubsection{Slowdown and Speedup Tables}
 
 In the context of providing a clear and comparative understanding of how different systems perform relative to a chosen baseline, the metrics maximum slowdown and maximum speedup become crucial. They offer a comprehensive view of the range of performance variations. Maximum slowdown indicates the worst-case scenario of reduced performance, while maximum speedup highlights the most significant improvement achieved.
 
-\textbf{Slowdown} indicates how much faster a specific system is compared to the baseline system. It is calculated as the ratio of the time taken by the system under consideration to the time taken by the baseline system. A slowdown value greater than 1 implies that the system is slower than the baseline. For example, a slowdown of 1.5 means the system is 1.5 times slower than the baseline.\\
+Slowdown indicates how much faster a specific system is compared to the baseline system. It is calculated as the ratio of the time taken by the system under consideration to the time taken by the baseline system. A slowdown value greater than 1 implies that the system is slower than the baseline. For example, a slowdown of 1.5 means the system is 1.5 times slower than the baseline.\\
 Identifying slowdowns is crucial for pinpointing areas of inefficiency or performance bottlenecks in a system. It helps in understanding where improvements are needed.
 
-\textbf{Speedup}, on the other hand, quantifies how much slower a specific system is compared to the baseline system. It is calculated similarly to slowdown but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
+Speedup, on the other hand, quantifies how much slower a specific system is compared to the baseline system. It is calculated similarly to slowdown but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
 Knowing the speedup is essential to highlight improvements. It indicates the effectiveness of optimizations or enhancements made to the system compared to the baseline.
 
 The Benchy Viewer employs tables to showcase the maximum slowdown and maximum speedup, visualized in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slowdown is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colors in the table serves as an effective visual indicator of performance outliers. Intensity in color corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This color-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
@@ -119,6 +147,9 @@ The Benchy Viewer employs tables to showcase the maximum slowdown and maximum sp
 The tables are organized based on the resulting ratio. In the maximum slowdown tables, the arrangement is ascending, placing the slowest queries of the baseline system compared to the faster alternative system at the top.\\
 Conversely, in maximum speedup tables, the sorting is descending, presenting the fastest queries of the baseline system compared to the alternative system at the forefront. This sorting strategy provides a logical structure to quickly identify and compare performance differences in either scenario.
 
+
+\subsubsection{Scatter Plot}
+
 The scatter plot is another effective choice for visualizing speedup and slowdown. These plots are particularly beneficial for trend analysis, offering a detailed view of each query individually. Users can identify trends, clusters, or outliers in the data, providing insights that might be less apparent in a table.
 
 In the Benchy Viewer a baseline is displayed, as illustrated in Figure~\ref{fig:scatter} positioned at Y = 1 and colored in blue. This positioning allows users to observe the relative performance of each query compared to the baseline system.
@@ -126,7 +157,7 @@ In the Benchy Viewer a baseline is displayed, as illustrated in Figure~\ref{fig:
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.7\linewidth]{figures/bsp-scatter.png}
-  \caption{Scatter Plot visualizes the speedup.}
+  \caption{Scatter plot visualizes the maximum speedup for Umbra on the Y-axis against the total time in milliseconds on the X-axis.}
   \label{fig:scatter}
 \end{figure}
 
@@ -134,6 +165,9 @@ In this example, the scatter plot represents the maximum speedup for the selecte
 Hovering above these query data points reveals the ratio of the corresponding speedup and the query identifier. We will explore the hover feature further in \ref{sec:hover-feature}.\\
 Queries from the competing system are marked in orange, and most of them are slower, with three queries below the baseline, indicating that these particular queries are faster.\\
 This observation prompts further investigation into the queries below the baseline, offering an opportunity to identify potential performance bottlenecks from the perspective of the baseline system. This nuanced understanding, facilitated by the visual representation of the scatter plot, guides users in pinpointing specific queries that deviate from the expected performance trend, aiding in targeted optimizations and analysis.
+
+
+\subsubsection{Performance Delta Bar Chart}
 
 In the Benchy Viewer, another visualization occurs, highlighting the performance disparities between a chosen baseline system and its competitors. It takes the form of a bar chart that illustrates the performance gap for each query, providing a perspective of the baseline system compared to the best-performing query of other competing systems.
 
@@ -154,7 +188,7 @@ This query performance gap visualization is instrumental in quickly discerning h
 
 
 
-\subsubsection{Hover Feature}\label{sec:hover-feature}
+\subsubsection{Global Hover Feature}\label{sec:hover-feature}
 
 \begin{figure}[h]
   \centering
@@ -267,10 +301,9 @@ Similar to this functionality, the Benchy Viewer provides the option to directly
 
 Choosing a specific query results in its highlighting across all visualizations, similar to the universal hover feature demonstrated in Figure~\ref{fig:hover-group}. This enables users to concurrently emphasize two separate queries, the chosen query and a hovered one, enabling a comparative analysis from various angles.
 
-\subsubsection{Comprehensive Query Insights}
+\subsubsection{Comprehensive Query Plan Insights}
 
-% Query Plan
-In the analysis workflow facilitated by the Benchy Viewer, once a significant query has been identified for more in-depth examination, the subsequent step involves selecting this particular query and transitioning to the Query Plan View. In this phase, users gain the ability to meticulously inspect the query plan associated with the chosen query for each database system under consideration.
+Within the analysis workflow, as we identify key queries requiring in-depth scrutiny, the standalone Query Plan Visualizer application \parencite*{semantic-diff} emerges as a valuable asset for detailed query comparisons. Users can meticulously examine the query plans associated with their chosen queries across different database systems. Given its congruent tech stack and seamless fit within the Benchy Viewer workflow, we made the strategic decision to integrate this tool as the Query Plan View. A more thorough exploration of the integration process for the semantic diff tool is outlined in Section \ref{sec:semantic-diff-integration}.
 
 The interactive legend, depicted in Figure~\ref{fig:legend-activate-deactivate}, maintains its presence in this view, allowing users to seamlessly activate or deactivate the display of query plans corresponding to specific database systems.
 
@@ -360,7 +393,32 @@ The information window also allows displaying the system representation. As an o
 
 At the top, the user can choose the database system for which the system representation should be displayed in the case of a merged node.
 
-All these functionalities are provided by the standalone application Query Plan Visualizer \parencite*{semantic-diff}. We dive deeper into the integration of the semantic diff tool in the section \ref{sec:semantic-diff-integration}.
+
+\subsection{Saving and Sharing the Application State}\label{sec:saving-sharing-state}
+
+One of the valuable features of the Benchy Viewer is its ability to save and share the application state. This encompasses all configurations related to visualization elements, global options, and dashboard settings. Users can conveniently save their current setup or download it for future reference, as depicted in Figure~\ref{fig:save-upload}.
+
+\subsubsection{Downloading Configuration}
+The saved configurations can be downloaded as a file, allowing users to keep a record of specific setups or share them with colleagues. This downloaded file serves as a snapshot of the application state at the time of saving.
+
+\subsubsection{Uploading Configurations}
+To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualizations, and global settings. It's a time-saving feature that ensures a seamless transition back to a specific analytical context.
+
+
+\begin{figure}[h]
+  \vspace{0.5cm}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/save-upload.png}
+  \caption{Downloading and uploading the application state.}
+  \label{fig:save-upload}
+\end{figure}
+
+
+\subsubsection{Facilitating Collaboration}
+The ability to share configuration files promotes collaboration among users. Team members can easily exchange analysis setups, ensuring a consistent view of data and enabling more effective collaboration on complex analytical projects.
+
+In essence, the "Saving and Sharing" feature enhances the flexibility and collaborative potential of the Benchy Viewer, providing users with a convenient way to exchange analytical contexts that are shaped by the flexible interface hub.
+
 
 
 \subsection{Flexible Interface Hub}
@@ -512,28 +570,3 @@ The Benchy Viewer also offers customization options for violin plots. Users can 
   \caption{Drop-down menu of global options, offering the selection of displaying data points or a boxplot within the violins of the violin charts.}
   \label{fig:chart-configuration-violin}
 \end{figure}
-
-\subsection{Saving and Sharing the Application State}\label{sec:saving-sharing-state}
-
-One of the valuable features of the Benchy Viewer is its ability to save and share the application state. This encompasses all configurations related to visualization elements, global options, and dashboard settings. Users can conveniently save their current setup or download it for future reference, as depicted in Figure~\ref{fig:save-upload}.
-
-\subsubsection{Downloading Configuration}
-The saved configurations can be downloaded as a file, allowing users to keep a record of specific setups or share them with colleagues. This downloaded file serves as a snapshot of the application state at the time of saving.
-
-\subsubsection{Uploading Configurations}
-To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualizations, and global settings. It's a time-saving feature that ensures a seamless transition back to a specific analytical context.
-
-
-\begin{figure}[h]
-  \vspace{0.5cm}
-  \centering
-  \includegraphics[width=0.4\linewidth]{figures/save-upload.png}
-  \caption{Downloading and uploading the application state.}
-  \label{fig:save-upload}
-\end{figure}
-
-
-\subsubsection{Facilitating Collaboration}
-The ability to share configuration files promotes collaboration among users. Team members can easily exchange analysis setups, ensuring a consistent view of data and enabling more effective collaboration on complex analytical projects.
-
-In essence, the "Saving and Sharing" feature enhances the flexibility and collaborative potential of the Benchy Viewer, providing users with a convenient way to exchange analytical contexts.
