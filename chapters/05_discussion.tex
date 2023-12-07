@@ -3,10 +3,55 @@
 
 \chapter{Discussion}\label{chapter:discussion}
 
+This thesis aims to support database engineers in optimizing query execution by providing an interactive user interface, enabling an effective in-depth analysis process. The achieved objectives include the development of an interactive platform enabling users to inspect results through diverse metrics and charts. 
+
 \section{Evaluation of Achievement of Objectives}
 
-\section{Critical Reflection on the App Development}
-\subsection{Challenges/ Technical Limitations (Performance limits)}
-\subsection{Design Choices and Trade-offs}
-\subsection{Comparison with Existing Solutions}
-\subsection{Potentials and Future Improvements}
+The analysis process should lead to the identification of performance bottlenecks.
+This theses does not guarantee the identification of bottlenecks, however it helps database engineers to find them through various visualizations and perspectives within the Benchy Viewer.
+
+
+\subsection{Interactive Analysis}
+% Explain
+The earlier performance measurements visualization method Benchy \parencite*{benchy}, as introduced in \ref*{sec:benchy},  presents a range of visualizations for benchmark data, incorporating diverse metrics and the capability to illustrate different instances of database systems.\\
+However, this approach prompts the need for dynamic interactions with the resulting data. For instance, in violin plots, each query performance result is portrayed as a data point within a violin, lacking information about which query a data point corresponds to. Due to the static nature of visualizations in the preceding approach, the exact values of query performance results remain concealed. In contrast, the Benchy Viewer introduces a dynamic element, allowing users to hover over data points to reveal precise details, such as time in milliseconds or the speedup/slowdown factor.
+
+
+There are some common practices in statistical dashboards that could enhance the Benchy Viewer's utility, but are currently not available.\\
+For instance, when multiple charts of the same type display specific query results with different metrics (e.g., three bar charts showcasing execution, compilation, and total time in milliseconds), zooming into one chart should automatically trigger a synchronized zoom in the others. Presently, users have to manually apply the same zoom to each chart individually, as this functionality is not supported by the Benchy Viewer.\\
+Sorting features are also absent in the Benchy Viewer. In a bar chart displaying individual query results, users cannot sort data in ascending or descending order. Additionally, within the Input File Reader the benchmark data comprises for some metrics an array of multiple values (e.g., an array of total time results contributing to the average total time for a query), and the Benchy Viewer does not provide a sorting functionality within those arrays.\\
+The only sorting feature available in the Benchy Viewer is offered through the slowdown and speedup tables introduced in Section \ref{sec:tables}. 
+From the baseline system's perspective, these tables sort the maximum slowdown in ascending order and the maximum speedup in descending order.
+
+Despite the Benchy Viewer lacking certain analytical features, it still offers a valuable set of interactive tools.
+Therefore, our Analytics Dashboard excels beyond the preceding visualization approach provided by Benchy. Through its core user interface design, including the sidebar and header, the Benchy Viewer offers interactive features in a clear and intuitive manner. It facilitates working with data interactively, enhancing the analysis processes for database developers, and aiding in the identification of  performance bottlenecks with all its assisting tools. 
+
+In addition, the Benchy Viewer boasts further interactive features, allowing users to fine-tune data visualizations to suit their preferences, facilitating the examination of performance measurements from diverse angles.
+
+
+\subsection{Multiple Perspectives}
+
+The Benchy Viewer presents a flexible approach of analyzing benchmark results, offering diverse perspectives through a range of charts and plots. Users can create more perspectives with these visualizations by selecting specific metrics and adjusting chart scales, including linear, logarithmic, and throughput options.
+Moreover, the Query Plan View plays a pivotal role in inspecting results from another angle, offering new insights compared to what the Analytics Dashboard provides with its charts and plots. To complete the spectrum of perspectives, the Input File View enables users to inspect data in a tabular and straightforward format.
+
+But the landscape of perspectives within the Benchy Viewer is not complete. Additional visualizations and metrics could enhance its capabilities further. For instance, the scale perspective is currently not covered by the Benchy Viewer. At present, there are no visualizations for comparing data based on the scale factor, suggesting a potential area for future development.\\
+Additionally, the Query Plan Difference Visualizer \parencite*{semantic-diff} has not been fully integrated into the Benchy Viewer, lacking features such as the ability to display query plan similarity.
+
+Nevertheless, the Benchy Viewer currently offers a diverse range of analytical perspectives. This multiplicity of viewpoints contributes to a more comprehensive understanding and interpretation of the results. The combination of these features significantly enhances the Benchy Viewer's analytical capabilities, aligning with our objective of identifying database performance bottlenecks.
+
+
+
+% - Mehr Perspektiven wären möglich: Andere Visualisierungen, mehr Metriken
+
+% - Mit Query Plan Difference Visualizer vergleichen: (Wir haben nicht alle Funktionen, kann man aber in Zukunft implementieren, Z.B. Hat das andere Tool eine universelle Bar Chart Visualization, um alle Metriken anzuzeigen, die es in den Daten gibt -> Benchy Viewer kann nur ein paar anzeigen -> Vllt das in Future Section)
+
+\subsection{Collaboration}
+
+The ability to save and load analytical configurations stands as a fundamental element in fostering collaboration. Instead of using a database, the Benchy Viewer achieves the saving feature by allowing users to download a file containing the application state. This file can then be easily uploaded from any machine running the Benchy Viewer.\\
+Moreover, the adaptable interface hub enables the creation of meaningful analytical contexts, making it particularly conducive to collaboration. In a collaborative scenario, one individual can uncover specific insights and swiftly share them with others by providing a preconfigured and meaningful setup. 
+
+On the one hand, there is a preference to save configurations online on the respective platform. On the other hand, some might opt to save it as a file on their local machine, benefiting from the simplicity of avoiding account creation and login complexities.
+
+However, providing at least one of these approaches is enough to enable this function to support collaboration. Hence, the Benchy Viewer achieves this need through a user-friendly approach that contributes to the efficiency of collaborative efforts, ensuring a seamless and uncomplicated process for sharing information among users.
+  
+
