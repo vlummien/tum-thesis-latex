@@ -55,3 +55,40 @@ On the one hand, there is a preference to save configurations online on the resp
 However, providing at least one of these approaches is enough to enable this function to support collaboration. Hence, the Benchy Viewer achieves this need through a user-friendly approach that contributes to the efficiency of collaborative efforts, ensuring a seamless and uncomplicated process for sharing information among users.
   
 
+\section{Challenges and Technical Limitations}
+
+\subsubsection*{Integration of the Query Plan Difference Visualizer}
+% Diff
+Integrating components from the Query Plan Difference Visualizer that utilized a different state management tool posed a significant challenge. The original app's state logic, actions, and data flow were intricately tied to its specific state management paradigm. Adapting these components to work seamlessly with the state management tool employed in the Benchy Viewer required careful consideration and adjustments to ensure a harmonious integration.\\
+Achieving consistency in the flow of data between components and the state was a paramount concern during the integration process. The disparities in how data was managed and updated led to conflicts and inconsistencies. Ensuring a reliable and predictable data flow across the integrated components demanded thorough testing and iterative refinement to identify and resolve any unforeseen issues.
+
+\subsubsection*{Integration of the Charting Library}
+
+Integrating Plotly, a powerful charting library, into the Benchy Viewer presented a multifaceted challenge. Plotly operates on its own set of visualization principles, and ensuring compatibility and smooth integration with existing components required thoughtful examination of data structures, styling, and interactive features.\\
+As the complexity and volume of data increased, performance considerations became a crucial factor. Ensuring smooth rendering and responsiveness of Plotly charts, especially when dealing with large datasets, posed technical challenges that needed careful optimization and testing. 
+
+% - Drag and Drop: Is complex to develop, bc of topics, such as collision detection, Layout challenges (Tiles have to be the same size), state challenges (complex state, has to be connected to business logic).
+
+
+\subsubsection*{Integration of Drag-and-Drop}
+Maintaining a consistent and intuitive user experience with the drag-and-drop feature in the Analytical Dashboard was a central challenge. Integrating dnd kit \parencite*{dndkit} seamlessly into the UI and the state management of the Benchy Viewer demanded careful consideration of user expectations and behaviors. For instance, circumventing layout limitations regarding fixed and same-sized drag-and-drop elements posed a specific challenge. To ensure behavioral demands, employing aspects such as collision detection and dynamic styling when dragging elements were necessary. These deliberations enabled the overall usability of the drag-and-drop feature, making it an integral and user-friendly part of the Benchy Viewer.
+
+
+\section{Potentials and Future Improvements}
+
+The Benchy Viewer, while achieving its objectives in providing an interactive and insightful platform for performance benchmark analysis, also acknowledges challenges and considers avenues for future growth. Through ongoing development and a commitment to address the amount of functionalities and technical limitations, the Benchy Viewer is poised for continued effectiveness and relevance in the landscape of database performance profiling.
+
+The Benchy Viewer was developed as part of a prototype, providing fundamental core functionality that lays the groundwork for future development. As it stands, the integration of the Query Plan Difference Visualizer opens the door for further enhancements by incorporating additional features. One notable feature that remains to be integrated is the display of a plan similarity metric, offering the potential for valuable additional insights into the comparative analysis of query plans. This future development could significantly augment the capabilities of the Benchy Viewer, enriching its functionality and utility in query plan analysis.
+
+Additional improvement potentials lie within the Analysis Dashboard. The enhancement of Plots and Charts could involve the integration of new features, such as global zoom functionality. This feature would enable synchronized zooming across multiple charts, providing analysts with the capability to effortlessly examine different facets of the data in greater detail.\\
+Moreover, introducing sorting functionalities in specific scenarios could prove advantageous. For instance, having the ability to sort results based on certain criteria would be beneficial for analyzing queries with varying execution times. Database developers could initiate their analysis by examining the longest-running queries and then progressively move on to the next in line, streamlining the investigative process.
+
+In the future, when custom visualizations are envisioned that may go beyond the capabilities of Plotly, the Benchy Viewer can seamlessly integrate other charting libraries to broaden its visualization spectrum. This flexibility allows for the incorporation of diverse visualization tools when Plotly presents limitations.\\
+The system design of the Benchy Viewer adheres to the model-view-controller paradigm, strategically segregating the user interface from the underlying business logic. This architectural choice not only enhances maintainability and modularity but also facilitates the seamless integration of various charting libraries. As a result, the Benchy Viewer remains adaptable and open to incorporating additional visualization resources in pursuit of richer and more diverse data representations.
+
+
+
+
+
+
+
