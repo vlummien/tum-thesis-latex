@@ -158,7 +158,7 @@ In the project structure hierarchy, the root component encapsulates the applicat
 In general, it detects impure calculations in the context of component states and multiple rendering. It enables a set of additional checks and warnings to catch and alert developers about unsafe or deprecated practices, contributing to better code quality. While it doesn't affect the production build, it's a valuable aid in identifying and addressing issues early in the development phase.
 
 
-\subsubsection{State Management with Redux}
+\subsubsection{State Management with Redux}\label{sec:redux-structure}
 The Redux Provider in the Benchy Viewer, built using Redux~\parencite{Redux}, serves as the central hub for managing the application's state. It acts as a shared space where different parts of the application can store and retrieve data efficiently.\\
 Utilizing the capabilities of \textit{Redux Toolkit}~\parencite{redux-toolkit}, the Redux Provider supplies the global state across the entire application. This global state is compartmentalized into five distinct slices, illustrated in Figure~\ref{fig:global-state}, each serving a unique purpose.
 

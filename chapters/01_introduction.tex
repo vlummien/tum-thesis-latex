@@ -2,16 +2,30 @@
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
 \chapter{Introduction}\label{chapter:introduction}
-Interactive performance visualization is a powerfull skill and plays a vital role for the demonstration of meaningful data insights in the context of performance measurements. Our goal is to use this powerfull skill properly to enable potential optimization possibilities for compiling database systems.
+
+Interactive performance visualization is a powerful skill that plays a vital role in conveying meaningful data insights, particularly in the domain of performance measurements. This thesis introduces the Benchy Viewer, a web-based serverless application meticulously crafted to leverage the potential of interactive performance visualization. The primary goal is to facilitate comprehensive analysis and optimization of query execution within database systems.
 
 \section{Motivation}
 \section{Technical Background}
 \subsection{React}
-\subsection{Redux}
-\subsection{React Sweet State//}
+
+React \parencite*{react} serves as a declarative framework designed for constructing interactive user interfaces in web applications. It operates on a component-based structure, promoting the development of modular and easily testable code. The incorporation of powerful React Hooks \parencite*{react-hooks} in particular the useState Hook \parencite*{react-useState} allows seamless binding of state to components. This aligns with characteristics reminiscent of a viewmodel in a model-view-viewmodel (MVVM) design pattern, allowing dynamic content updates without requiring page reloads and ensuring a high level of interactivity.
+
+JSX \parencite*{react-jsx} is a syntax extension for JavaScript that empowers developers to write HTML-like markup. This streamlined approach to creating UI elements contributes to improved code readability, making it more accessible for developers to understand and maintain.\\
+The concept of the virtual DOM \parencite*{react-virtual-dom} is pivotal in React's approach, maintaining a virtual representation of the UI in memory that syncs with the actual DOM. This optimization of rendering significantly contributes to enhanced performance and responsiveness. It aligns with React's declarative nature, simplifying UI logic. Developers can express how the UI should look in different states, and React takes care of the updates and rendering, providing a solid foundation for interactive applications like the Benchy Viewer.
+
+\subsection{Redux}\label{sec:redux}
+
+In the Benchy Viewer, the integration of Redux \parencite*{Redux} plays a crucial role as the application state management tool, which operates as the model component within the MVVM pattern.\\ 
+The Redux Provider in the Benchy Viewer serves as the central hub for managing the application's state, acting as a shared space where different parts of the application can efficiently store and retrieve data. Leveraging the capabilities of Redux Toolkit~\parencite{redux-toolkit}, the Redux Provider facilitates the distribution of the global state throughout the entire application. This global state is compartmentalized into distinct slices, each serving a unique purpose, as explored in \ref{sec:redux-structure}.\\
+In the Benchy Viewer, Redux is particularly utilized to connect visualizations with benchmark data and visualization options, ensuring an interactive experience in the analytical process. Additionally, it enables collaborative features through application state downloads and uploads, as detailed further in \ref*{sec:saving-sharing-state}.
+
 \subsection{Plotly}
-\subsection{React-Flow}
-\section{Benchy - Existing Visualization of Performance Data of Umbra //PDF }\label{sec:benchy}
+
+For visualizing data within plots and charts, the graphing library Plotly \parencite{plotly} was employed in the Benchy Viewer. Plotly stands out as a versatile and interactive graphing library embraced for data visualization, with compatibility extending to languages like JavaScript through Plotly JavaScript \parencite{plotly-js}.\\
+Plotly comes equipped with a rich set of features that align seamlessly with the interactivity goals of the Benchy Viewer. It allows users to easily scroll, zoom, and pan around plots, providing a dynamic exploration of the data. In the Benchy Viewer, these features were tailored to enhance the experience of analyzing performance benchmark data. Notably, our interactive hover feature adds another layer of depth to the visualization with a simple cursor hover. This feature is rooted in Plotly's hover functionality, which laid the groundwork for developing the global hover feature. Here, a singular cursor hover initiates synchronized global hover effects across multiple visualizations, providing a cohesive analytical experience, as elaborated in \ref{sec:plotly-hover}. 
+
+\section{Benchy - Existing Visualization of Performance Data of Umbra}\label{sec:benchy}
 The existing solution \parencite*{benchy}.
 
 \section{Research objectives}
