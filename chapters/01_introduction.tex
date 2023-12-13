@@ -6,29 +6,46 @@
 Interactive performance visualization is a powerful skill that plays a vital role in conveying meaningful data insights, particularly in the domain of performance measurements. This thesis introduces the Benchy Viewer, a web-based serverless application meticulously crafted to leverage the potential of interactive performance visualization. The primary goal is to facilitate comprehensive analysis and optimization of query execution within database systems.
 
 \section{Motivation}
+
+Database Management Systems (DBMS) exhibit proficiency in the efficient manipulation of vast datasets, excelling in tasks such as updating, storing, and querying extensive tables. Among these systems, relational DBMSs have long stood out as the prevailing technology for the management and querying of structured data \parencite*{analyze-big-data-inside-dbms, literature-big-data}. In the realm of big data, where the volume and variety of data surge exponentially, effective management becomes paramount for informed decision-making across industries \parencite*{big-data}. To handle increasing requirements, it is necessary to continuously analyze performance benchmarks for operational efficiency. Hence, our motivation is the optimization of database systems to meet the evolving demands of modern applications. Visualizations play a pivotal role in this process, serving as powerful tools to dissect complex performance data.
+
+Benchy \parencite*{benchy} is a powerful database benchmarking tool aimed at assessing the performance of different database systems. It facilitates benchmarking and supports data visualization, presenting visualizations with diverse metrics for various database instances. However, to enhance the performance analysis process, dynamic interactions with the resulting data are crucial, emphasizing the need for an application with a user-friendly and interactive interface that enables users to seamlessly explore and interpret benchmark results, fostering a more comprehensive understanding of the databases under evaluation.
+
+\section{Scope and Research Objectives}
+
+One of the core objectives is to design and develop the Benchy Viewer application to deliver interactive data visualizations. The emphasis is on seamlessly presenting performance measurements from diverse database systems, ensuring a user-friendly and intuitive interface. The research delves into the exploration of statistical methods within the application. Leveraging statistical methods within the Benchy Viewer, the goal is to analyze performance data, derive meaningful insights, and contribute to informed decision-making and strategic optimization of database systems.
+
+In a collaborative context, the Benchy Viewer aims to facilitate the sharing and reusability of performance data and visualizations, representing a crucial research dimension. This involves exploring mechanisms for collaborative features, empowering users to efficiently share and reuse valuable performance insights.
+
+In essence, the scope and research objectives of the Benchy Viewer project are comprehensive, aiming to create a robust and user-centric platform for interactive performance visualization with the goal of advancing decision support and optimization strategies in the realm of database systems.
+
+
 \section{Technical Background}
+
+In the realm of interactive web applications, a variety of frameworks and libraries serve as fundamental tools. As integral components of the Benchy Viewer, we provide concise introductions to the core technologies driving our implementation. Notably, we explore the React  \parencite*{react}, Redux  \parencite*{Redux}, and Plotly \parencite{plotly} in shaping the functionality and interactivity of the Benchy Viewer.
+
 \subsection{React}
 
-React \parencite*{react} serves as a declarative framework designed for constructing interactive user interfaces in web applications. It operates on a component-based structure, promoting the development of modular and easily testable code. The incorporation of powerful React Hooks \parencite*{react-hooks} in particular the useState Hook \parencite*{react-useState} allows seamless binding of state to components. This aligns with characteristics reminiscent of a viewmodel in a model-view-viewmodel (MVVM) design pattern, allowing dynamic content updates without requiring page reloads and ensuring a high level of interactivity.
-
+React serves as a declarative framework designed for constructing interactive user interfaces in web applications. It operates on a component-based structure, promoting the development of modular and easily testable code. The incorporation of powerful React Hooks \parencite*{react-hooks} in particular the useState Hook \parencite*{react-useState} allows seamless binding of state to components. This aligns with characteristics reminiscent of a viewmodel in a model-view-viewmodel (MVVM) design pattern, allowing dynamic content updates without requiring page reloads and ensuring a high level of interactivity.\\
 JSX \parencite*{react-jsx} is a syntax extension for JavaScript that empowers developers to write HTML-like markup. This streamlined approach to creating UI elements contributes to improved code readability, making it more accessible for developers to understand and maintain.\\
 The concept of the virtual DOM \parencite*{react-virtual-dom} is pivotal in React's approach, maintaining a virtual representation of the UI in memory that syncs with the actual DOM. This optimization of rendering significantly contributes to enhanced performance and responsiveness. It aligns with React's declarative nature, simplifying UI logic. Developers can express how the UI should look in different states, and React takes care of the updates and rendering, providing a solid foundation for interactive applications like the Benchy Viewer.
 
 \subsection{Redux}\label{sec:redux}
 
-In the Benchy Viewer, the integration of Redux \parencite*{Redux} plays a crucial role as the application state management tool, which operates as the model component within the MVVM pattern.\\ 
+In the Benchy Viewer, the integration of Redux plays a crucial role as the application state management tool, which operates as the model component within the MVVM pattern.\\ 
 The Redux Provider in the Benchy Viewer serves as the central hub for managing the application's state, acting as a shared space where different parts of the application can efficiently store and retrieve data. Leveraging the capabilities of Redux Toolkit~\parencite{redux-toolkit}, the Redux Provider facilitates the distribution of the global state throughout the entire application. This global state is compartmentalized into distinct slices, each serving a unique purpose, as explored in \ref{sec:redux-structure}.\\
 In the Benchy Viewer, Redux is particularly utilized to connect visualizations with benchmark data and visualization options, ensuring an interactive experience in the analytical process. Additionally, it enables collaborative features through application state downloads and uploads, as detailed further in \ref*{sec:saving-sharing-state}.
 
 \subsection{Plotly}
 
-For visualizing data within plots and charts, the graphing library Plotly \parencite{plotly} was employed in the Benchy Viewer. Plotly stands out as a versatile and interactive graphing library embraced for data visualization, with compatibility extending to languages like JavaScript through Plotly JavaScript \parencite{plotly-js}.\\
-Plotly comes equipped with a rich set of features that align seamlessly with the interactivity goals of the Benchy Viewer. It allows users to easily scroll, zoom, and pan around plots, providing a dynamic exploration of the data. In the Benchy Viewer, these features were tailored to enhance the experience of analyzing performance benchmark data. Notably, our interactive hover feature adds another layer of depth to the visualization with a simple cursor hover. This feature is rooted in Plotly's hover functionality, which laid the groundwork for developing the global hover feature. Here, a singular cursor hover initiates synchronized global hover effects across multiple visualizations, providing a cohesive analytical experience, as elaborated in \ref{sec:plotly-hover}. 
+For visualizing data within plots and charts, the graphing library Plotly was employed in the Benchy Viewer. Plotly stands out as a versatile and interactive graphing library embraced for data visualization, with compatibility extending to languages like JavaScript through Plotly JavaScript \parencite{plotly-js}.\\
+Plotly comes equipped with a rich set of features that align seamlessly with the interactivity goals of the Benchy Viewer. It allows users to easily scroll, zoom, and pan around plots, providing a dynamic exploration of the data. In the Benchy Viewer, these features were tailored to enhance the experience of analyzing performance benchmark data. Notably, our interactive hover feature adds another layer of depth to the visualization with a simple cursor hover. This feature is rooted in Plotly's hover functionality, which laid the groundwork for developing the global hover feature. Here, a singular cursor hover initiates synchronized global hover effects across multiple visualizations, providing a cohesive analytical experience, as elaborated in \ref{sec:plotly-hover}.
 
-\section{Benchy - Existing Visualization of Performance Data of Umbra}\label{sec:benchy}
-The existing solution \parencite*{benchy}.
 
-\section{Research objectives}
-\section{Scope and contribution of the thesis}
 \section{Thesis structure}
 
+Following the introductory chapter, the thesis explores related work in the second section, focusing on database performance profiling and visualization tools.\\
+The third chapter delves into theoretical foundations, covering aspects of database systems, performance measurements, and utilized datasets.\\
+The heart of the thesis lies in the fourth chapter, where the implementation of the Benchy Viewer is dissected. This chapter discusses conceptual features, design guidelines, data structures, and the integration of Plotly-React \parencite*{plotly} and the Query Plan Visualizer \parencite*{semantic-diff}.\\
+Moving on, the fifth section is dedicated to a detailed discussion that evaluates the achievement of objectives, highlights challenges, and suggests potential improvements.\\
+Finally, the conclusion summarizes key findings and proposes directions for future research, providing a cohesive overview of the thesis structure.
