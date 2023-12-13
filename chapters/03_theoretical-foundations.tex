@@ -3,8 +3,8 @@
 
 \chapter{Theoretical Foundations}\label{chapter:theoreticalFoundacions}
 
-In this chapter, we investigate the theoretical foundations by examining database performance measurements and in the next step describing used datasets and the data structure.\\We will start by discussing the characterisitcs of database systems and elaborate on the significance of performance measurements in this context. Additionally, we will outline the common performance metrics, that play a central role in the evaluation of performance analysis.
-\\ For clarifying used datasets and the data structure, we commence by describing the utilized performance data, followed by giving an overview of the structure of the Benchy Viewer's input file containing the performance measurements. Moreover, the data prepration for this input file will be explained.
+In this chapter, we investigate the theoretical foundations by examining database performance measurements and in the next step describing used datasets and the data structure.\\We will start by discussing the characteristics of database systems and elaborate on the significance of performance measurements in this context. Additionally, we will outline the common performance metrics, that play a central role in the evaluation of performance analysis.
+\\ For clarifying used datasets and the data structure, we commence by describing the utilized performance data, followed by giving an overview of the structure of the Benchy Viewer's input file containing the performance measurements. Moreover, the data preparation for this input file will be explained.
 
 \section{Database Systems and Performance Measurements}
 Performance measurement and analysis are fundamental in the realm of database systems. They offer valuable insights into system behavior, helping to pinpoint bottlenecks and optimization opportunities. This comprehensive performance assessment not only allows for the effective evaluation and refinement of one's own system but also provides a benchmark for meaningful comparisons with other systems, fostering a continuous cycle of improvement. Visualizations play a pivotal role in understanding performance data and are often used to convey complex findings effectively.
@@ -56,7 +56,7 @@ In the context of performance metrics, the Benchy Viewer should be capable of vi
 
 In addition to organizing query results into clusters, where each cluster corresponds to a specific database instance, providing the flexibility to select a specific metric for this categorization would be advantageous. For example, if a database developer's primary focus is on throughput concerning the compilation and execution, coupled with maximum speed-up, they should be able to tailor the data visualization to reflect these specific metrics.
 
-Up next, we'll explore the dataset that is consumed by the Benchy Viewer to offer all the data and performance metrics within the analytical visualizations. We'll detail the data structure and how the data is prepared to get in this shape.
+Up next, we will explore the dataset that is consumed by the Benchy Viewer to offer all the data and performance metrics within the analytical visualizations. We will detail the data structure and how the data is prepared to get in this shape.
 
 \section{Used Datasets and Data Structure}
 In this section, we talk about the dataset that is consumed by the Benchy Viewer to create meaningful performance visualizations.\\
@@ -65,7 +65,7 @@ At first, we explore the diverse metrics encompassed within the dataset. For eac
 \subsection{Description of the Utilized Performance Data}
 In this section, we take a closer look at the performance data which is utilized by the Benchy Viewer. These data contain various metrics that give us insights into how our database system is performing: total time (compilation, execution), cycles, instructions, L1 data cache misses, LLC (Last-Level Cache) misses, branch misses, DTLB (Data Translation Lookaside Buffer) misses, tasks, instructions per cycle (IPC), CPU frequency (GHz), and scalability metrics. 
 
-\textbf{Total time} represents the combined time taken for both query compilation and query execution. It's a critical measure of how efficiently queries are processed. Lower total times are desired, indicating faster query processing.
+\textbf{Total time} represents the combined time taken for both query compilation and query execution. It is a critical measure of how efficiently queries are processed. Lower total times are desired, indicating faster query processing.
 
 \textbf{Compilation} is a high-efficiency approach for query execution, utilizing just-in-time (JIT) compilation to create custom machine code for each query \parencite{Bringin-Compiling-Databases-to-RISC,generationOfMachineCode}. This involves translating the query from a relational plan to an intermediate representation (IR) and then to native machine code. While boosting execution efficiency, it adds a step and incurs translation costs, particularly impacting short or complex queries, leading to longer response times. For smaller datasets, the relative cost increases as most time is spent in compilation. 
 
@@ -87,7 +87,7 @@ In this section, we take a closer look at the performance data which is utilized
 
 \textbf{CPUs} are defined by the number of cores utilized by the system. A higher number of CPUs implies a higher degree of concurrent computing, potentially leading to executing the given query in a more efficient manner. However, the effectiveness of parallel processing also depends on factors like architecture, clock speed, and the specific nature of the computing tasks.
 
-\textbf{GHz (Gigahertz)} is a unit of measurement used to quantify the clock speed or frequency of a CPU or other electronic components within a computer system. Specifically, it represents one billion cycles per second. In computing, it is primarily used to describe the base operating frequency of a CPU. However, it's important to note that modern CPUs often have dynamic clock adjustments, such as Intel Turbo Boost \parencite*{intel-turbo-boost}. This feature allows the CPU to temporarily increase its clock speed based on system demands.
+\textbf{GHz (Gigahertz)} is a unit of measurement used to quantify the clock speed or frequency of a CPU or other electronic components within a computer system. Specifically, it represents one billion cycles per second. In computing, it is primarily used to describe the base operating frequency of a CPU. However, it is important to note that modern CPUs often have dynamic clock adjustments, such as Intel Turbo Boost \parencite*{intel-turbo-boost}. This feature allows the CPU to temporarily increase its clock speed based on system demands.
 
 \textbf{Scale} is a metric that pertains to the quantity of tuples processed by a database system within a defined pipeline. Tuples denote individual data entries, and the scale metric evaluates the system's effectiveness in handling and manipulating data across different volumes. It serves as a crucial indicator of a database's performance and scalability, with a higher scale value indicating a larger dataset. Typically expressed as the number of tuples processed per unit of time, this metric aids in evaluating throughput and efficiency under diverse workloads, providing insights for optimizing and configuring the system.
 

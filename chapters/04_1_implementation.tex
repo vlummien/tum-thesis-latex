@@ -90,7 +90,7 @@ It commences with a comparative analysis of each query using a bar chart. Simila
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{figures/bsp-bar.png}
-    \caption{Bar chart visualizes the totals time in ms of different queries.}
+    \caption{Bar chart visualizes the total time in ms of different queries.}
     \label{fig:bar-chart}
   \end{figure}
 
@@ -133,7 +133,7 @@ Slowdown indicates how much faster a specific system is compared to the baseline
 Identifying slowdowns is crucial for pinpointing areas of inefficiency or performance bottlenecks in a system. It helps in understanding where improvements are needed.
 
 Speedup, on the other hand, quantifies how much slower a specific system is compared to the baseline system. It is calculated similarly to slowdown but in the reverse manner. A speedup value greater than 1 implies that the system is faster than the baseline. For example, a speedup of 2 means the system is twice as fast as the baseline.\\
-Knowing the speedup is essential to highlight improvements. It indicates the effectiveness of optimizations or enhancements made to the system compared to the baseline.
+Knowing the speedup is essential to highlight improvements, it indicates the effectiveness of optimizations or enhancements made to the system compared to the baseline.
 
 The Benchy Viewer employs tables to showcase the maximum slowdown and maximum speedup, visualized in Figure~\ref{fig:slowdown-speedup-chart}, where the maximum slowdown is displayed on the left side and the maximum speedup on the right side using Umbra as the baseline system. The use of cell colors in the table serves as an effective visual indicator of performance outliers. Intensity in color corresponds to the extent of the outlier, offering a rapid understanding of the range and distribution between these extreme values. This color-coded representation aids users in identifying and assessing the significance of performance variations across different systems.
 
@@ -200,8 +200,8 @@ This query performance gap visualization is instrumental in quickly discerning h
 Hovering over data points in a chart is an indispensable feature, commonly employed to extract more detailed information about a specific data point. In the context of analyzing query performances and identifying noteworthy queries within visualizations, the ability to scrutinize a particular query from multiple perspectives becomes crucial.
 
 
- In the Benchy Viewer, we've elevated this feature, which is illustrated in Figure~\ref{fig:hover-group}, to a global hover capability within the application.\\
- This means that when a user hovers over a specific query, not only is that query highlighted within the current chart, but the same queries within all other visualizations are also highlighted simultaneously. This synchronization spans various visualizations, including violin plots, scatter plots, and bar charts which represent distinct queries.\\
+ In the Benchy Viewer, we have elevated this feature, which is illustrated in Figure~\ref{fig:hover-group}, to a global hover capability within the application.\\
+ This means when a user hovers over a specific query, not only is that query highlighted within the current chart, but the same queries within all other visualizations are also highlighted simultaneously. This synchronization spans various visualizations, including violin plots, scatter plots, and bar charts which represent distinct queries.\\
  With this feature, the user is able to easily identify the same queries across various visualizations, offering a comprehensive understanding from diverse perspectives.
 
 
@@ -212,25 +212,23 @@ In addition to visualizations, the Benchy Viewer features a data table for in-de
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\linewidth]{figures/data-viewer.png}
+  \includegraphics[width=0.8\linewidth]{figures/data-viewer.png}
   \caption{Snapshot of the Data Viewer: Organized rows and columns of benchmark data.}
   \label{fig:data-viewer}
 \end{figure}
 
-This view showcases the benchmark data, elaborately described in Section \ref{sec:input-file-structure}. The header encompasses all properties and metrics of a data row. Data rows below the header represent the data of a query, including the reference to the database system and the complete benchmark data for that query.\\
+This view showcases the benchmark data, elaborately described in Section \ref{sec:input-file-structure}. The header encompasses all properties and metrics of a data row.\\
+Data rows below the header represent the data of a query, including the reference to the database system and the complete benchmark data for that query.\\
 Vertical and horizontal scrolling are enabled to navigate through the extensive data rows and metrics, as the volume of information exceeds the screen's capacity.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.4\linewidth]{figures/data-viewer-header-options.png}
+  \includegraphics[width=0.3\linewidth]{figures/data-viewer-header-options.png}
   \caption{Column options drop-down offering sorting, filtering, and column visibility functionality.}
   \label{fig:data-viewer-options}
 \end{figure}
 
 The header offers various options in a drop-down menu to interact with the data sheet, as depicted in Figure~\ref{fig:data-viewer-options}.
-
-% Sorting
-The first option enables sorting the table based on a selected data column with numerical values. Users can choose between ascending or descending order, and there's an option to reset the sorting. This functionality is particularly useful when organizing specific data, for instance, sorting the table based on total time in milliseconds.
 
 \begin{figure}[h]
   \centering
@@ -249,18 +247,19 @@ The first option enables sorting the table based on a selected data column with 
   \label{fig:combined-figures}
 \end{figure}
 
-% Filter
-The filter option, as shown in Figure~\ref{fig:data-viewer-filter}, provides a tool for refining the displayed data in the table. Users can easily narrow down their focus by selecting a specific column, an operator, and a value. This allows for targeted exploration of the data, such as isolating rows related to a particular database management system, as demonstrated in Figure~\ref{fig:data-viewer-filter-operator}. This filtering capability enhances the user's ability to extract meaningful insights from the benchmark data.
-
-
-% Manage Columns
+% Sorting
+The first option enables sorting the table based on a selected data column with numerical values. Users can choose between ascending or descending order, and there is an option to reset the sorting. This functionality is particularly useful when organizing specific data, for instance, sorting the table based on total time in milliseconds.
 
 \begin{figure}[h]
+  \vspace{1cm}
   \centering
-  \includegraphics[width=0.35\linewidth]{figures/data-viewer-manage-columns.png}
+  \includegraphics[width=0.3\linewidth]{figures/data-viewer-manage-columns.png}
   \caption{Column Manager: Easily control column visibility in the data sheet for a tailored view.}
   \label{fig:data-viewer-manage-columns}
 \end{figure}
+
+% Filter
+The filter option, as shown in Figure~\ref{fig:data-viewer-filter}, provides a tool for refining the displayed data in the table. Users can easily narrow down their focus by selecting a specific column, an operator, and a value. This allows for targeted exploration of the data, such as isolating rows related to a particular database management system, as demonstrated in Figure~\ref{fig:data-viewer-filter-operator}. This filtering capability enhances the user's ability to extract meaningful insights from the benchmark data.
 
 When dealing with extensive datasets, the Benchy Viewer ensures flexibility and ease of use by allowing users to tailor their view. Through the 'Manage columns' feature, accessed via the drop-down menu, users can not only hide columns but also gain a holistic overview of active columns. 
 
@@ -341,7 +340,7 @@ A central capability is the merging of all activated query plans using a specifi
 \end{figure}
 
 % Hide Subtree
-For extensive query plans, it's beneficial to conceal subtrees that are presently less relevant. This action reduces the overall size of the query plan, emphasizing the more pertinent sections. Users can employ this functionality for any node, as illustrated in Figure~\ref{fig:query-plan-hide-subtree}.
+For extensive query plans, it is beneficial to conceal subtrees that are presently less relevant. This action reduces the overall size of the query plan, emphasizing the more pertinent sections. Users can employ this functionality for any node, as illustrated in Figure~\ref{fig:query-plan-hide-subtree}.
 
 \begin{figure}[h]
   \centering
@@ -387,7 +386,7 @@ The information window also allows displaying the system representation. As an o
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/query-plan-node-system-representation-combined.png}
-  \caption{Query plan system representaion of a node.}
+  \caption{Query plan system representation of a node.}
   \label{fig:query-plan-system-representation}
 \end{figure}
 
@@ -402,7 +401,7 @@ One of the valuable features of the Benchy Viewer is its ability to save and sha
 The saved configurations can be downloaded as a file, allowing users to keep a record of specific setups or share them with colleagues. This downloaded file serves as a snapshot of the application state at the time of saving.
 
 \subsubsection{Uploading Configurations}
-To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualizations, and global settings. It's a time-saving feature that ensures a seamless transition back to a specific analytical context.
+To recreate a previous analysis session, users can upload a saved configuration file. This action loads all the configurations, restoring the dashboard layout, applied visualizations, and global settings. It is a time-saving feature that ensures a seamless transition back to a specific analytical context.
 
 
 \begin{figure}[h]
@@ -486,7 +485,7 @@ Initiating the deletion process, another noteworthy feature embedded in the cont
 \subsubsection{Chart Configurations}\label{sec:chart-configuration}
 
 Within the Benchy Viewer, a versatile dashboard serves as a backdrop for seamless interaction with diverse visualizations. Delving into individual visualization elements, the platform prioritizes adaptability, allowing users to tailor charts and plots to their specific requirements.\\
-We'll explore the capability to select a metric within a chart, demonstrate the flexibility of switching to a table visualization in the context of maximum speedup and maximum slowdown, and finally, highlight global chart options.
+We will explore the capability to select a metric within a chart, demonstrate the flexibility of switching to a table visualization in the context of maximum speedup and maximum slowdown, and finally, highlight global chart options.
 
 \begin{figure}[h]
   \centering

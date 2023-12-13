@@ -155,7 +155,7 @@ The root component is the entry point of the Benchy Viewer React application, or
 The primary responsibility of the root component is to render the main application, serving as the nexus for various functionalities, providing the structural and organizational backbone for the entire application. 
 
 In the project structure hierarchy, the root component encapsulates the application with\texttt{ <React.StrictMode/>}~\parencite{reactstrictmode}, which is a tool that highlights common issues and potential problems in a React application during development.
-In general, it detects impure calculations in the context of component states and multiple rendering. It enables a set of additional checks and warnings to catch and alert developers about unsafe or deprecated practices, contributing to better code quality. While it doesn't affect the production build, it's a valuable aid in identifying and addressing issues early in the development phase.
+In general, it detects impure calculations in the context of component states and multiple rendering. It enables a set of additional checks and warnings to catch and alert developers about unsafe or deprecated practices, contributing to better code quality. While it doesn't affect the production build, it is a valuable aid in identifying and addressing issues early in the development phase.
 
 
 \subsubsection{State Management with Redux}\label{sec:redux-structure}
@@ -165,7 +165,7 @@ Utilizing the capabilities of \textit{Redux Toolkit}~\parencite{redux-toolkit}, 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/global-state.png}
-  \caption{Application State Compartements.}
+  \caption{Application State Compartments.}
   \label{fig:global-state}
 \end{figure}
 
@@ -226,7 +226,7 @@ Additionally, this state holds the demo data, which is initialised on the start 
 
 \subsection{Global Settings}\label{sec:global-settings}
 
-In the Benchy Viewer, the global settings serve as a central hub for interactive and customizable data exploration. Features like hover and selected queries offer real-time insights, while selecting a baseline system deepens understanding for comparative analysis. Visual configurations provide the power to mould data representation, aligning with user preferences. In essence, the global settings act as the control center, empowering users for dynamic and tailored data exploration.
+In the Benchy Viewer, the global settings serve as a central hub for interactive and customizable data exploration. Features like hover and selected queries offer real-time insights, while selecting a baseline system deepens the understanding for comparative analysis. Visual configurations provide the power to mould data representation, aligning with user preferences. In essence, the global settings act as the control center, empowering users for dynamic and tailored data exploration.
 
 \subsubsection{Hovered Query}
 
@@ -283,7 +283,7 @@ The query plan's data structure is divided into two essential parts. First, ther
 
 \subsubsection{Visualization Parameters}\label{sec:query-plan-parameters}
 
-To enhance the user experience, the Query Plan Viewer incorporates a collapsible functionality in every node, denoted by an icon. The activation of this functionality at a specific node will collabse its whole subtree.\\
+To enhance the user experience, the Query Plan Viewer incorporates a collapsible functionality in every node, denoted by an icon. The activation of this functionality at a specific node will collapse its whole subtree.\\
 Recognizing that some users may find this feature unnecessary, an option exists in the settings to disable collapsibility. This choice hides all icons in the nodes, ensuring a cleaner and less distracting look for the query plan.
 
 The matching algorithm parameter is a pivotal component influencing the visualization of query plans in the Benchy Viewer. This property, structured as an enum, provides a spectrum of options to tailor the matching algorithm based on specific visualization needs. It is accessible in the header when the Query Plan View is active, as depicted in Figure~\ref{fig:query-plan-slider}. When set to "none", it allows query plans to be displayed independently, side by side, without any comparison. Alternatively, choosing "top down" or "bottom up" initiates matching algorithms that prioritize either a top-down or bottom-up approach, optimizing clarity in specific scenarios. The "top down/bottom up" option combines both methods, offering a balanced approach.
@@ -309,7 +309,7 @@ The data transformation involves creating instances that represent each element 
 For visualizing the data within plots and charts, the graphing library \textit{Plotly} \parencite{plotly}, was used. Plotly is a versatile and interactive graphing library widely used for data visualization. Its compatibility with languages like JavaScript, through \textit{Plotly JavaScript} \parencite{plotly-js}, enhances its appeal for web-based applications. With its features and user-friendly interface, Plotly is a solid choice for rendering interactive visual representations of data.
 
 \subsection{General Features}
-Plotly comes out of the box with a bunch of features that align with the interactability of the Benchy Viewer.
+Plotly comes out of the box with a bunch of features that align with the interaction requirements of the Benchy Viewer.
 
 Plotly allows users to effortlessly scroll, zoom, and pan around plots, offering a dynamic exploration of the data. The ability to reset zoom provides added convenience, ensuring users can navigate through intricate details with ease.\\
 Plotly further extends its functionality by enabling users to download the current representation as a PNG file, facilitating seamless sharing and documentation of visual insights.\\
@@ -344,7 +344,7 @@ To ensure seamless integration and synchronized functionality with the Benchy Vi
 
 Firstly, it constructs the chart header, facilitating a drag-and-drop interface that seamlessly aligns with the Analytics Dashboard's drag-and-drop functionality. The header also encompasses chart settings, including a nested menu where users can select metrics and perform basic actions like duplication or deletion. Additionally, a descriptive label elucidates the content of the visualization element.
 
-All the information presented in the wrapper is orchestrated by the controller, which manages state changes, such as when a user selects a different metric in the chart settings.\\
+All the information presented in the wrapper is orchestrated by the controller, which manages state changes, such as the selection of a different metric in the chart settings by the user.\\
 The controller is also responsible for preparing the data for visualization which involves the conversion of benchmark data into a data structure compatible with Plotly. This process may be divided into multiple stages, especially when utilizing metrics like speed-up and slow-down, which require additional calculations before presenting data to Plotly.\\
 Calculations for proper scaling on the x-axis and y-axis are performed, taking into account the dataset's highest values. Furthermore, the controller constructs appropriate axis properties, such as the proper tick values, based on the visualization type and chart settings.
 
@@ -369,7 +369,7 @@ In the UI subsection, both tools utilize the Material UI framework \parencite*{m
 The integration of the Query Plan Visualizer into the Benchy Viewer introduced a challenge due to the disparity in the global state management systems used. The Query Plan Visualizer relies on React Sweet State for managing its state, encompassing everything from the actual query plan data to various configuration settings. On the other hand, the Benchy Viewer employs Redux for managing the global state of the entire application.\\
 To maintain coherence and prevent the use of multiple state management tools within the application, a crucial step was to convert the relevant parts of the React Sweet State to Redux. This conversion process was a key challenge given that React Sweet State and Redux, while both state management libraries for React, have distinct approaches and underlying concepts.
 
-The conversion process from React Sweet State to Redux involved a top-level restructuring of the state management logic. In React Sweet State, the state management is more localized and hook-based, catering to the component's specific needs. On the other hand, Redux operates with a global store and relies on actions and reducers for state modifications.
+The conversion process from React Sweet State to Redux involved a top-level restructuring of the state management logic. In React Sweet State, the state management is more localized and hook-based, catering to the components' specific needs. On the other hand, Redux operates with a global store and relies on actions and reducers for state modifications.
 
 To migrate, we first identified the distinct states managed by React Sweet State and refactored them into Redux actions and reducers. This required careful consideration of how data flows through the application and the structure of the Redux store. The hook-based state management in React Sweet State was replaced with action dispatches and selectors in Redux.
 
